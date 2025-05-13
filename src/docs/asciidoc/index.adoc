@@ -1,0 +1,36 @@
+= Bring back the joy in web development with Hypermedia
+:revealjs_theme: white
+:revealjs_controls: true
+:revealjs_progress: false
+:revealjs_slideNumber: false
+:revealjs_history: true
+:revealjs_center: true
+:revealjs_transition: fade
+:source-highlighter: highlight.js
+:highlightjs-languages: html,java   
+:icons: font
+:imagesdir: images/
+:customcss: css/custom.css
+
+:host-name: #springio25
+:host-url: https://2025.springio.net
+:host-logo-url:
+:host-logo-style: background-color: transparent; border-color: transparent !important;
+:host-social-name: @spring_io
+:host-social-url:
+:talk-tag: #htmx
+:mastodon-handle: @atomfrede@mastodon.social
+include::_shared/_title_footer.adoc[]
+
+
+== Test
+
+hier eine slide
+
+
+
+
+
+
+
+
