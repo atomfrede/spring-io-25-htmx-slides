@@ -1,5 +1,6 @@
-= Bring back the joy in web development with Hypermedia
-:revealjs_theme: white
+= Bring back the joy in web development with HTMX and Hypermedia
+// :revealjs_theme: white
+:revealjs_customtheme: css/shades-of-grey.css
 :revealjs_controls: true
 :revealjs_progress: false
 :revealjs_slideNumber: false
@@ -7,7 +8,7 @@
 :revealjs_center: true
 :revealjs_transition: fade
 :source-highlighter: highlight.js
-:highlightjs-languages: html,java   
+:highlightjs-languages: html,java,javascript
 :icons: font
 :imagesdir: images/
 :customcss: css/custom.css
@@ -18,7 +19,7 @@
 :host-logo-style: background-color: transparent; border-color: transparent !important;
 :host-social-name: @spring_io
 :host-social-url:
-:talk-tag: #htmx
+:talk-tag: #htmx #hypermedia
 :mastodon-handle: @atomfrede@mastodon.social
 include::_shared/_title_footer.adoc[]
 
@@ -26,6 +27,88 @@ include::_shared/_title_footer.adoc[]
 == Test
 
 hier eine slide
+
+== Source Code
+
+[source,html,highlight="1,2,6..10"]
+----
+<form id="new-todo-form" th:action="@{/}"
+    method="post" th:object="${item}">
+    <input id="new-todo-input" class="new-todo"
+        autocomplete="false"
+        name="title"
+        th:field="*{title}"
+        hx-target="#todo-list"
+        hx-swap="beforeend"
+        hx-post="/"
+        hx-trigger="keyup[key=='Enter']"
+    >
+</form>
+----
+
+== Next
+
+[source,html,highlight="3|4,6"]
+----
+<a href="/manager/users/57/change-status"
+title="Benutzerstatus ändern"
+hx-get="/manager/users/57/change-status"
+hx-target="closest td"
+hx-swap="outerHTML">deaktiviert</a>
+----
+
+== Java
+
+[source,java,highlight="3|4,6"]
+----
+public class Demo {
+    public static void main(final String... args) {
+        final Supplier supplier = () -> "world";
+        final String message = String.format("Hello, %s!", supplier.get());
+        System.out.println(message);
+    }
+}
+----
+
+== But first
+
+WARNING: This presentation is dangerous!
+
+[.important-text]
+== Slide Title
+
+* Some
+* Information
+
+[.columns]
+== Columns with size
+
+[.column.is-one-third]
+--
+* **Kotlin**
+* Java
+* Scala
+--
+
+[.column]
+--
+Programming language for Android, mobile cross-platform
+and web development, server-side, native,
+and data science. Open source forever Github.
+--
+
+== Quote
+
+.After landing the cloaked Klingon bird of prey in Golden Gate park:
+[quote,Captain James T. Kirk,Star Trek IV: The Voyage Home]
+Everybody remember where we parked.
+
+== Text
+
+That is *strong* stuff!
+
+That is _really strong_ stuff!
+
 
 
 

@@ -1,15 +1,18 @@
 [subs="attributes"]
 ++++
 
-<footer>
-    <span class="element">{mastodon-handle}</span>
-    <span class="element">{host-social-name} || {host-name}</span>
-    <span class="element">{talk-tag}</span>
-</footer>
-<!-- Just adding a footer does not work because reveal.js puts it into the slides and we couldn't get it out via CSS. So we move it via JavaScript. -->
+  <div class="footer">
+            <span class="conference">{host-name}</span>
+            <span class="talk">{talk-tag}</span>
+            <span class="speaker">
+                {mastodon-handle}
+            </span>
+        </div>
+
 <script>
 	document.addEventListener('DOMContentLoaded', function () {
-		document.body.appendChild(document.querySelector('footer'));
+        document.querySelector('.reveal').appendChild(document.querySelector('.footer'));
+// 		document.body.appendChild(document.querySelector('.footer'));
 	})
 </script>
 ++++
