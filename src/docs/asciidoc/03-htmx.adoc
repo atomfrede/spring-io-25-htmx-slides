@@ -70,6 +70,13 @@ ____
 </body>
 ----
 
+== HOWL - Hypermedia on whatever you like
+
+* Thymeleaf - the classic
+* JStachio - typesafe, extremely fast mustache
+* HTMLFLow - DSL approach (better use kotlin)
+* kotlinx.html - Pure kotlin
+* Qute - the quarkus one
 
 [.columns]
 == HTMX - the rising star
