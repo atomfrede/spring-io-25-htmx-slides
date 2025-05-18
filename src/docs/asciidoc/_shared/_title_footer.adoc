@@ -6,6 +6,9 @@
             <span class="talk">{talk-tag}</span>
             <span class="speaker">
                 {mastodon-handle}
+                <a href="https://www.adesso.de/de/unternehmen/standorte/paderborn.jsp" title="adesso SE">
+                    <img class="adesso" src="images/adesso_logo.png" height="3rem" alt="adesso SE">
+                    </a>
             </span>
         </div>
 

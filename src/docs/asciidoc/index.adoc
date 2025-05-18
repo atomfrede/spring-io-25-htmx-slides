@@ -7,6 +7,7 @@
 :revealjs_history: true
 :revealjs_center: true
 :revealjs_transition: fade
+:revealjs_controls: false
 :source-highlighter: highlight.js
 :highlightjsdir: _highlight
 :icons: font
@@ -24,14 +25,46 @@
 include::_shared/_title_footer.adoc[]
 
 
+[.columns]
 == About Me
 
+[.column.is-two-thirds]
+* 👨‍👩‍👧‍👦 🏊‍♂️ 🚴 🏃
+* Software Architect @adesso SE
+* JUG Paderborn Co-Organizer
+* JHipster Board Member
+
+[.column]
+image:duke-pb.png[width=200]
+image:jhipster.png[width=200]
+
+== Agenda
+
+1. Modern Frontend Development
+2. Hypermedia
+3. JTE, HTMX
+5. HTMX Patterns
+4. Conclusion
+
+[.notes]
+--
+* Modern frontend development & complexity
+* What is hypermedia & hypermedia controls
+* Why JTE, What is HTMX?
+* Typical patterns involved in typical web applications
+* Conclusion
+--
+
+include::01-intro.adoc[]
 
 
 
-== Test
 
-hier eine slide
+
+
+
+
+
 
 == Source Code
 

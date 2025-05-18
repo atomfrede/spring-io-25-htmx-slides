@@ -264,3 +264,7 @@ gradle-app.setting
 
 !src/docs/asciidoc/_reveal/dist
 !docs/_reveal/dist
+!src/docs/asciidoc/_reveal/plugin
+!docs/_reveal/plugin
+!src/docs/asciidoc/_highlight
+!docs/_highlight/

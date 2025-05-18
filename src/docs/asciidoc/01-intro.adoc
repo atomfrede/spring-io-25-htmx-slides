@@ -1,0 +1,48 @@
+== Modern Frontend Development
+
+* SPAs are often use "by default"
+* API Churn
+* Lot of tools, frameworks involved
+* Teamsplit
+
+[.notes]
+--
+* JS Fatigue
+* Is this really needed most of the time?
+* All of this increases the complexity by huge amount
+--
+
+[%notitle]
+== Modern Frontend Development
+
+image::spark-joy-meme.jpg[background, size=cover]
+
+== Does it spark joy?
+
+[quote,Thoughworks Tech Radar]
+____
+[...]accepting the complexity of SPAs by default even when *business needs don't justify it*.
+We still see some developers who aren't aware of an alternative approach because they've spent their entire career in a framework like React.
+We believe that many websites will *benefit from the simplicity of server-side logic*[...]
+____
+
+
+[.notes]
+--
+* Often not, because the business do not need it
+* Be honest, what do we build very often? Form based applications
+* Creating one api id not enough, can't move forward fast with own frontend
+* GraphQL is even more complex and has some serious security issues
+--
+
+== Does it spark joy?
+
+* SPAs are often not needed, but increased the complexity by huge factor
+* There will be a point when static html is not enough anymore
+* When is this point reached? Can it be pushed further?
+
+[.notes]
+--
+* When html is not enough anymore, SPAs are the next step
+* but this changes everything, the whole architectur
+--
