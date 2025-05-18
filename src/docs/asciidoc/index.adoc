@@ -42,7 +42,7 @@ image:jhipster.png[width=200]
 
 1. Modern Frontend Development
 2. Hypermedia
-3. HTMX
+3. HTMX, JTE
 5. HTMX Patterns
 4. Conclusion
 

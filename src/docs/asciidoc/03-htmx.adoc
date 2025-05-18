@@ -19,7 +19,57 @@ ____
 * `hx-trigger`
 * `hx-swap`
 
-==
+== HTMX
+
+[source,html,highlight="2,3,4,5"]
+----
+<button
+    hx-post="/clicked"
+    hx-trigger="click"
+    hx-target="#parent-div"
+    hx-swap="outerHTML">
+    Click Me!
+</button>
+----
+
+== JTE
+
+* There are a lot of template engines for java/the jvm
+* Most of them are very mature
+* But nearly none of them is typesafe
+* Many use reflection
+* *does it spark joy?*
+
+[.notes]
+--
+* Without type safety refactoring becomes a nightmare
+* can't see what a page really needs
+* reflection does not play well with native images/graal vm
+* alternatives e.g. JStachio when you would like to use a known template syntax
+* thymeleaf for feature rich and widespread support
+* qute for quarkus applications
+--
+
+== JTE
+
+[source,html]
+----
+@import org.example.Page
+
+@param Page page
+
+<head>
+    @if(page.getDescription() != null)
+        <meta name="description" content="${page.getDescription()}">
+    @endif
+    <title>${page.getTitle()}</title>
+</head>
+<body>
+    <h1>${page.getTitle()}</h1>
+    <p>Welcome to my example page!</p>
+</body>
+----
+
 
 [.columns]
 == HTMX - the rising star

@@ -51,10 +51,10 @@ ____
 
 == Hypermedia driven applications
 
-[quote,Hypermedia Systems]
-----
+[quote]
+____
 A web application that uses *hypermedia* and *hypermedia exchanges* as its primary mechanism for communicating with a server.
-----
+____
 
 [.notes]
 --

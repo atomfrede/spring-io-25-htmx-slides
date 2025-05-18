@@ -433,7 +433,7 @@ ul.byline li + li {
 <section id="_about_me" class="columns"><h2>About Me</h2><div class="slide-content"><div class="ulist column is-two-thirds"><ul><li><p>👨‍👩‍👧‍👦 🏊‍♂️ 🚴 🏃</p></li><li><p>Software Architect @adesso SE</p></li><li><p>JUG Paderborn Co-Organizer</p></li><li><p>JHipster Board Member</p></li></ul></div>
 <div class="paragraph column"><p><span class="image"><img src="images/duke-pb.png" alt="duke pb" width="200"></span>
 <span class="image"><img src="images/jhipster.png" alt="jhipster" width="200"></span></p></div></div></section>
-<section id="_agenda"><h2>Agenda</h2><div class="slide-content"><div class="olist arabic"><ol class="arabic"><li><p>Modern Frontend Development</p></li><li><p>Hypermedia</p></li><li><p>HTMX</p></li><li><p>HTMX Patterns</p></li><li><p>Conclusion</p></li></ol></div>
+<section id="_agenda"><h2>Agenda</h2><div class="slide-content"><div class="olist arabic"><ol class="arabic"><li><p>Modern Frontend Development</p></li><li><p>Hypermedia</p></li><li><p>HTMX, JTE</p></li><li><p>HTMX Patterns</p></li><li><p>Conclusion</p></li></ol></div>
 <aside class="notes"><div class="ulist"><ul><li><p>Modern frontend development &amp; complexity</p></li><li><p>What is hypermedia &amp; hypermedia controls</p></li><li><p>Why JTE, What is HTMX?</p></li><li><p>Typical patterns involved in typical web applications</p></li><li><p>Conclusion</p></li></ul></div></aside></div></section>
 <section id="_modern_frontend_development"><h2>Modern Frontend Development</h2><div class="slide-content"><div class="ulist"><ul><li><p>SPAs are often use "by default"</p></li><li><p>API Churn</p></li><li><p>Lot of tools, frameworks involved</p></li><li><p>Teamsplit</p></li></ul></div>
 <aside class="notes"><div class="ulist"><ul><li><p>JS Fatigue</p></li><li><p>Is this really needed most of the time?</p></li><li><p>All of this increases the complexity by huge amount</p></li></ul></div></aside></div></section>
@@ -453,14 +453,36 @@ We believe that many websites will <strong>benefit from the simplicity of server
 <aside class="notes"><div class="ulist"><ul><li><p>Ted Nelson was a visionary of computer human interaction</p></li><li><p>I learned about his concepts at university</p></li><li><p>Project xanadu envisioned a lot concepts picked up by other technologies</p></li><li><p>But it strived for perfection and was too academic</p></li><li><p>In 1968 Douglas Engelbart from Stanford showed a demo (memex) of what we today take for granted</p><div class="ulist"><ul><li><p>Remote Collaborative Text Editing</p></li><li><p>Video, Audio Chat</p></li><li><p>An underlined hypertext, clicking it navigated to the linked content</p></li></ul></div></li></ul></div></aside></div><div class="footnotes"><div class="footnote">1. <a href="https://en.wikipedia.org/wiki/Hypertext" class="bare">https://en.wikipedia.org/wiki/Hypertext</a></div><div class="footnote">2. <a href="https://en.wikipedia.org/wiki/Ted_Nelson" class="bare">https://en.wikipedia.org/wiki/Ted_Nelson</a></div><div class="footnote">3. <a href="https://en.wikipedia.org/wiki/Project_Xanadu" class="bare">https://en.wikipedia.org/wiki/Project_Xanadu</a></div><div class="footnote">4. <a href="https://en.wikipedia.org/wiki/Memex" class="bare">https://en.wikipedia.org/wiki/Memex</a></div></div></section>
 <section id="_fast_forward"><h2>Fast Forward&#8230;&#8203;</h2><div class="slide-content"><div class="ulist"><ul><li><p>1990 Tim Berners-Lee published the first website</p></li><li><p>HTML - Hypertext Markup Language</p></li><li><p>Hyperlinks between documents</p></li><li><p>Forms where <strong>not part</strong> of the initial HTML (readonly)</p></li><li><p>Anchors and forms have been enough to make the web grow rapidly</p></li></ul></div>
 <aside class="notes"><div class="ulist"><ul><li><p>HTML is omnipresent today</p></li><li><p>After forms came up the web transformed from a document oriented system to a system architecture</p></li><li><p>Think of wikipedia as the prime example of hypertext/hypermedia system</p></li><li><p>The web as such is really simple</p></li></ul></div></aside></div></section>
-<section id="_hypermedia_driven_applications"><h2>Hypermedia driven applications</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre>A web application that uses *hypermedia* and *hypermedia exchanges* as its primary mechanism for communicating with a server.</pre></div></div>
+<section id="_hypermedia_driven_applications"><h2>Hypermedia driven applications</h2><div class="slide-content"><div class="quoteblock"><blockquote><div class="paragraph"><p>A web application that uses <strong>hypermedia</strong> and <strong>hypermedia exchanges</strong> as its primary mechanism for communicating with a server.</p></div></blockquote></div>
 <aside class="notes"><div class="ulist"><ul><li><p>So we must exhange HTML documents/snippets</p></li><li><p>Everything has an url</p></li><li><p>The response ca just be rendered no need of the client to have any up front knowledge</p></li></ul></div></aside></div></section>
 <section id="_html_stopped_to_evolve_as_hypermediahypertext"><h2>HTML stopped to evolve as hypermedia/hypertext</h2><div class="slide-content"><div class="olist arabic"><ol class="arabic"><li><p>Why should only <code>&lt;a&gt;</code> and <code>&lt;form&gt;</code> be able to make HTTP requests?</p></li><li><p>Why should only <code>click</code> and <code>submit</code> events trigger a request?</p></li><li><p>Why should only <code>GET</code> and <code>POST</code> be allowed?</p></li><li><p>Why should only the entire screen be replaced?</p></li></ol></div>
 <aside class="notes"><div class="ulist"><ul><li><p>These missing features makes it hard to build modern hypermedia drive applications</p></li></ul></div></aside></div></section>
 <section id="_htmx"><h2>HTMX</h2><div class="slide-content"><div class="quoteblock"><blockquote><div class="paragraph"><p>By removing these constraints, htmx completes HTML as a hypertext</p></div></blockquote><div class="attribution">&#8212; HTMX</div></div>
 <div class="ulist"><ul><li><p>small js-library (~14k)</p></li><li><p>simplifies AJAX, WebSockets, Server Send Events</p></li><li><p>access all the features declaratively via HTML attributes</p></li><li><p>server answers with (partial) HTML</p></li></ul></div></div></section>
-<section id="_htmx_attributes"><h2>HTMX Attributes</h2><div class="slide-content"><div class="ulist"><ul><li class="fragment"><p>Small set of essential attributes</p></li><li class="fragment"><p><code>hx-get|post|put|delete</code></p></li><li class="fragment"><p><code>hx-target</code></p></li><li class="fragment"><p><code>hx-trigger</code></p></li><li class="fragment"><p><code>hx-swap</code></p></li></ul></div>
-<div class="paragraph"><p>==</p></div></div></section>
+<section id="_htmx_attributes"><h2>HTMX Attributes</h2><div class="slide-content"><div class="ulist"><ul><li class="fragment"><p>Small set of essential attributes</p></li><li class="fragment"><p><code>hx-get|post|put|delete</code></p></li><li class="fragment"><p><code>hx-target</code></p></li><li class="fragment"><p><code>hx-trigger</code></p></li><li class="fragment"><p><code>hx-swap</code></p></li></ul></div></div></section>
+<section id="_htmx_2"><h2>HTMX</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="2,3,4,5" data-lang="html">&lt;button
+    hx-post="/clicked"
+    hx-trigger="click"
+    hx-target="#parent-div"
+    hx-swap="outerHTML"&gt;
+    Click Me!
+&lt;/button&gt;</code></pre></div></div></div></section>
+<section id="_jte"><h2>JTE</h2><div class="slide-content"><div class="ulist"><ul><li><p>There are a lot of template engines for java/the jvm</p></li><li><p>Most of them are very mature</p></li><li><p>But nearly none of them is typesafe</p></li><li><p>Many use reflection</p></li><li><p><strong>does it spark joy?</strong></p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>Without type safety refactoring becomes a nightmare</p></li><li><p>can&#8217;t see what a page really needs</p></li><li><p>reflection does not play well with native images/graal vm</p></li><li><p>alternatives e.g. JStachio when you would like to use a known template syntax</p></li><li><p>thymeleaf for feature rich and widespread support</p></li><li><p>qute for quarkus applications</p></li></ul></div></aside></div></section>
+<section id="_jte_2"><h2>JTE</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-lang="html">@import org.example.Page
+
+@param Page page
+
+&lt;head&gt;
+    @if(page.getDescription() != null)
+        &lt;meta name="description" content="${page.getDescription()}"&gt;
+    @endif
+    &lt;title&gt;${page.getTitle()}&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;${page.getTitle()}&lt;/h1&gt;
+    &lt;p&gt;Welcome to my example page!&lt;/p&gt;
+&lt;/body&gt;</code></pre></div></div></div></section>
 <section id="_htmx_the_rising_star" class="columns"><h2>HTMX - the rising star</h2><div class="slide-content"><div class="paragraph column"><p>2023</p></div>
 <div class="imageblock"><img src="images/htmx-2023.png" alt="htmx 2023"></div>
 <div class="paragraph column"><p>2024</p></div>
