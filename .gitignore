@@ -261,3 +261,6 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,java,gradle,node,macos,linux
+
+!src/docs/asciidoc/_reveal/dist
+!docs/_reveal/dist

@@ -8,7 +8,7 @@
 :revealjs_center: true
 :revealjs_transition: fade
 :source-highlighter: highlight.js
-:highlightjs-languages: html,java,javascript
+:highlightjsdir: _highlight
 :icons: font
 :imagesdir: images/
 :customcss: css/custom.css
@@ -25,6 +25,7 @@ include::_shared/_title_footer.adoc[]
 
 
 == About Me
+
 
 
 

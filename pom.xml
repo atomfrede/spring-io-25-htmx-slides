@@ -63,7 +63,7 @@
                                     </requires>
                                     <attributes>
                                         <revealjsdir>
-                                            https://cdn.jsdelivr.net/npm/reveal.js@5.2.1
+                                            _reveal
                                         </revealjsdir>
                                     </attributes>
                                 </configuration>
@@ -82,7 +82,7 @@
                                     </requires>
                                     <attributes>
                                         <revealjsdir>
-                                            https://cdn.jsdelivr.net/npm/reveal.js@5.2.1
+                                            _reveal
                                         </revealjsdir>
                                     </attributes>
                                 </configuration>
