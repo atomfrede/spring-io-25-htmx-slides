@@ -17,6 +17,19 @@
 
 image::spark-joy-meme.jpg[background, size=cover]
 
+[%notitle]
+== Does it spark joy?
+
+image::logos.png[background, size=cover]
+
+[.notes]
+--
+* a lot of tools
+* a lot have come and go, but have been adapted
+* make them work together and keep it up is hard
+* a lot of dependencies to manage
+--
+
 == Does it spark joy?
 
 [quote,Thoughworks Tech Radar]
@@ -25,7 +38,6 @@ ____
 We still see some developers who aren't aware of an alternative approach because they've spent their entire career in a framework like React.
 We believe that many websites will *benefit from the simplicity of server-side logic*[...]
 ____
-
 
 [.notes]
 --
@@ -41,8 +53,11 @@ ____
 * There will be a point when static html is not enough anymore
 * When is this point reached? Can it be pushed further?
 
+image::types.png[]
+
 [.notes]
 --
 * When html is not enough anymore, SPAs are the next step
-* but this changes everything, the whole architectur
+* but this changes everything, the whole architecture
+* The main question is where can or should the state be managed, where is most of the state relevant?
 --

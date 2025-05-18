@@ -1,0 +1,77 @@
+== What is hypermedia?
+
+[.notes]
+--
+* Short history of hypermedia and hypertexts
+* what is a modern implementation of it?
+* what are the shortcomings?
+--
+
+== What is hypermedia?
+
+[quote,Ted Nelson]
+____
+Hypertexts: New forms of writing, appearing on computer screens, that will *branch* or perform at the reader’s command. A hypertext is a *non-sequential piece of writing*; only the computer display makes it practical.
+____
+
+== History lesson
+
+* Ted Nelson coined the term footnote:hypertext[https://en.wikipedia.org/wiki/Hypertext] in 1963 footnote:ted[https://en.wikipedia.org/wiki/Ted_Nelson]
+* *Non-linear branching model*
+* Project Xanadu footnote:xanadu[https://en.wikipedia.org/wiki/Project_Xanadu]
+* Can be traced back to the 40ties and the idea of the memex footnote:memex[https://en.wikipedia.org/wiki/Memex]
+
+[.notes]
+--
+* Ted Nelson was a visionary of computer human interaction
+* I learned about his concepts at university
+* Project xanadu envisioned a lot concepts picked up by other technologies
+* But it strived for perfection and was too academic
+* In 1968 Douglas Engelbart from Stanford showed a demo (memex) of what we today take for granted
+** Remote Collaborative Text Editing
+** Video, Audio Chat
+** An underlined hypertext, clicking it navigated to the linked content
+--
+
+== Fast Forward...
+
+* 1990 Tim Berners-Lee published the first website
+* HTML - Hypertext Markup Language
+* Hyperlinks between documents
+* Forms where *not part* of the initial HTML (readonly)
+* Anchors and forms have been enough to make the web grow rapidly
+
+[.notes]
+--
+* HTML is omnipresent today
+* After forms came up the web transformed from a document oriented system to a system architecture
+* Think of wikipedia as the prime example of hypertext/hypermedia system
+* The web as such is really simple
+--
+
+== Hypermedia driven applications
+
+[quote,Hypermedia Systems]
+----
+A web application that uses *hypermedia* and *hypermedia exchanges* as its primary mechanism for communicating with a server.
+----
+
+[.notes]
+--
+* So we must exhange HTML documents/snippets
+* Everything has an url
+* The response ca just be rendered no need of the client to have any up front knowledge
+--
+
+== HTML stopped to evolve as hypermedia/hypertext
+
+1. Why should only `<a>` and `<form>` be able to make HTTP requests?
+2. Why should only `click` and `submit` events trigger a request?
+3. Why should only `GET` and `POST` be allowed?
+4. Why should only the entire screen be replaced?
+
+[.notes]
+--
+* These missing features makes it hard to build modern hypermedia drive applications
+--
+

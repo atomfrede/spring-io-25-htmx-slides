@@ -1,0 +1,40 @@
+== HTMX
+
+[quote,HTMX]
+____
+By removing these constraints, htmx completes HTML as a hypertext
+____
+
+* small js-library (~14k)
+* simplifies AJAX, WebSockets, Server Send Events
+* access all the features declaratively via HTML attributes
+* server answers with (partial) HTML
+
+== HTMX Attributes
+
+[%step]
+* Small set of essential attributes
+* `hx-get|post|put|delete`
+* `hx-target`
+* `hx-trigger`
+* `hx-swap`
+
+==
+
+[.columns]
+== HTMX - the rising star
+
+[.column]
+2023
+
+image::htmx-2023.png[]
+[.column]
+2024
+
+image::htmx-2024.png[]
+
+[.notes]
+--
+* There is a lot of interest in the recent years
+* the predecessor intercooler.js did not gain that much traction
+--
