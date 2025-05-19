@@ -1,0 +1,94 @@
+== Conclusion
+
+== Does it spark joy?
+
+* removed a lot of complexity
+* pushed the barrier for SPAs further
+* ability to move faster (no contracts)
+* invest in long living, framework agnostic tech(niques)
+* team(s) are not split
+
+image::types2.png[]
+
+== When to use it?
+
+* Form based applications (aka "enterprise" applications)
+* CRUD
+* e-commerce
+* Nested UI elements, controlled updates
+* Must use *hypermedia exchanges* as primary communication
+
+[.notes]
+--
+* "uncontrolled" or unrestricted updates may lead to jquery like issues
+--
+
+== And when not to use it?
+
+* Offline requirement
+* Many dynamic, interdependent UI elements
+* Updated very frequently (e.g. Miro)
+* Be aware of certain security implications
+** CSP, hx-on/trigger, XSS, HTML injection
+* Combine these approaches ("dynamic islands")
+
+[.notes]
+--
+* most of the time, starting with hypermedia is good enough
+* think of the team structure --> full stack
+--
+
+[.columns]
+== Must Read
+
+[.column]
+image::hypermedia-systems-cover.png[250,350,role=thumb]
+
+[.column]
+image::modern-frontends-cover.png[250,350,role=thumb]
+
+== Links
+
+* https://htmx.org/[htmx.org]
+* https://www.wimdeblauwe.com/books/modern-frontends-with-htmx/[Modern Frontends with HTMX]
+* https://hypermedia.systems[Hypermedia Systems]
+* https://github.com/dashorst/funwithflags[Fun with Flags (Quarkus, HTMX, Websockets)]
+* https://tschuehly.gitbook.io/server-side-spring-htmx-workshop[HTMX + ViewComponents Workshop]
+* https://chrisdone.com/posts/htmx-critique/[A modest critique of Htmx]
+* https://unplannedobsolescence.com/blog/less-htmx-is-more/[Less HTMX is More]
+* https://www.sjoerdlangkemper.nl/2024/06/26/htmx-content-security-policy/[HTMX does not play well with content security policy]
+
+[.columns]
+== Example Code
+
+[.column]
+* https://github.com/atomfrede/spring-io-25-samples[GitHub]
+* https://codeberg.org/atomfrede/spring-io-25-sample[Codeberg]
+
+[.columns]
+
+image::gh-code.png[250,250, role=thumb]
+
+image::codeberg-code.png[250,250, role=thumb]
+
+[.columns]
+== Thanks
+
+[.column]
+* Questions?
+* Slides ➡️
+
+[.column]
+image::slides-code.png[250,250]
+
+[.notes]
+--
+Thanks for taking part in the last session for today
+after a long day attending another talk is great
+--
+
+[%notitle]
+== It sparks joy
+
+image::it-sparks-joy.png[background, size=cover]
+

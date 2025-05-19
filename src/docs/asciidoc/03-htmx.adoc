@@ -77,21 +77,44 @@ ____
 * HTMLFLow - DSL approach (better use kotlin)
 * kotlinx.html - Pure kotlin
 * Qute - the quarkus one
-
-[.columns]
-== HTMX - the rising star
-
-[.column]
-2023
-
-image::htmx-2023.png[]
-[.column]
-2024
-
-image::htmx-2024.png[]
+* Spring ViewComponents
 
 [.notes]
 --
-* There is a lot of interest in the recent years
-* the predecessor intercooler.js did not gain that much traction
+* it should support "fragments"
+* typesafe is better
+* ViewComponents: UI Components build on server side using JTE
+* DSL approach looks promising
 --
+
+== Client-side state/scripting?
+
+* Plain/VanillaJS
+* alpine.js
+* stimulus (hotwired)
+
+[.notes]
+--
+* sometimes client side state/scripting is needed
+* e.g. dropdowns
+* alpine fits well declaratively
+* stimulus controller + declaratively application
+--
+
+// [.columns]
+// == HTMX - the rising star
+//
+// [.column]
+// 2023
+//
+// image::htmx-2023.png[]
+// [.column]
+// 2024
+//
+// image::htmx-2024.png[]
+//
+// [.notes]
+// --
+// * There is a lot of interest in the recent years
+// * the predecessor intercooler.js did not gain that much traction
+// --

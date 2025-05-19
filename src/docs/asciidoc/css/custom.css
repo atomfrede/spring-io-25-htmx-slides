@@ -2,3 +2,7 @@
     color: #64748b;
     font-size: 1.5rem;
 }
+
+.imageblock.thumb {
+    padding: 10px;
+}

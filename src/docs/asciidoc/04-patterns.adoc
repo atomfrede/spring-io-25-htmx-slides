@@ -1,3 +1,208 @@
 == HTMX patterns
 
-DEMO TIME
+== Form validation
+
+image::form-empty.png[]
+
+== Form validation
+
+[source,html,highlight="1,13|6,7,8,9|10"]
+----
+<form action="/" method="post" id="hx-form">
+    <fieldset>
+        <label>Firstname
+        <input
+                type="text"
+                hx-trigger="keyup changed delay:250ms"
+                hx-post="/"
+                hx-include="closest form"
+                hx-target="#hx-form"
+                hx-swap="morph">
+        </label>
+    <fieldset>
+    <button type="submit" value="Submit">Submit</button>
+</form>
+----
+
+[.notes]
+--
+* using morph instead of default inner html replacement to keep selection and focus for example
+--
+
+== Form validation
+
+[source,java,highlight="1,2,6,9"]
+----
+@HxRequest
+@PostMapping("")
+public String htmxPost(@Valid FormModel formModel, BindingResult bindingResult, Model model){
+    model.addAttribute("formModel", formModel);
+    model.addAttribute("validationResult", bindingResult);
+    return "form";
+}
+
+@PostMapping("")
+public String postIndex(@Valid FormModel formModel, BindingResult bindingResult, Model model){
+    // usual form handling with redirect
+}
+----
+
+== Form validation
+
+image::form-validated.png[]
+
+
+== Pagination, Sorting
+
+image::table.png[]
+
+== Pagination, Sorting
+
+[source,html,highlight="1,4|12"]
+----
+<table hx-target="#table-wrapper" hx-push-url="true" class="striped">
+    <thead><tr><th scope="col">
+    @if (persons.getSort().getOrderFor("name") != null && persons.getSort().getOrderFor("name").isDescending())
+    <div hx-get="/tables?sort=name,asc&size=${persons.getPageable().getPageSize()}&page=${persons.getPageable().getPageNumber()}">
+          Name (V)
+    </div>@endif</th><tr></thead>
+</table>
+<div role="group" hx-target="#table-wrapper" hx-push-url="true">
+    <!-- omitted for brevity -->
+    @if (persons.hasPrevious())
+        <button
+        hx-get="/tables?size=?page=${persons.getPageable().getPageNumber()-1}&${persons.getPageable().getPageSize()}&sort=${persons.getPageable().getSort().toString().replace(": ", ",").trim().toLowerCase(Locale.ROOT)}"
+        >Prev
+        </button>
+    @else
+        <button disabled>Prev</button>
+    @endif
+</div>
+----
+
+== Pagination, Sorting
+
+[source,java,highlight="3,6|9,11,14"]
+----
+@GetMapping
+public String index(Model model, Pageable pageable) {
+    Page<Person> page = personService.findAll(pageable);
+    model.addAttribute("persons", page);
+    model.addAttribute("pager", PagerModel.fromPage(page));
+    return "table/index";
+}
+@GetMapping
+@HxRequest
+public String table(Model model, Pageable pageable) {
+    Page<Person> page = personService.findAll(pageable);
+    model.addAttribute("persons", page);
+    model.addAttribute("pager", PagerModel.fromPage(page));
+    return "table/table";
+}
+----
+
+== Endless scrolling
+
+[source,html,highlight="1,2|4,5,6"]
+----
+@for(var personEntry : ForSupport.of(persons.getContent()))
+    @if (personEntry.isLast())
+        <blockquote
+        hx-get="/endless-scrolling?page=${persons.getNumber() + 1}&size=${persons.getSize()}&sort=name,desc"
+        hx-trigger="intersect once"
+        hx-swap="afterend"
+        >${personEntry.get().getQuote()}</blockquote>
+    @else
+        <blockquote>${personEntry.get().getQuote()}</blockquote>
+    @endif
+@endfor
+----
+
+== Realtime updates
+
+[source,html]
+----
+<ul hx-ext="ws" ws-connect="/websockets/ws" id="news-feed"></ul>
+----
+
+[source,java,highlight="1,4,5"]
+----
+@Scheduled(fixedRate = 5000)
+public void updateNewsFeed(){
+    TemplateOutput output = new StringOutput();
+    templateEngine.render("feedItem.jte", Map.of("feedItem", randomFeedItem()), output);
+    websocketHolder.broadcastHtmlSnipped(output.toString());
+}
+----
+
+[.notes]
+--
+* yes it is that simple
+--
+
+== Realtime updates
+
+[source,html]
+----
+<ul hx-ext="ws" ws-connect="/websockets/ws" id="news-feed"></ul>
+----
+
+[source,html,highlight="2"]
+----
+@param com.github.atomfrede.spring_io_25_samples.RealtimeService.FeedItem feedItem
+<li id="news-feed" hx-swap-oob="afterbegin">
+    <article>
+        <header>${feedItem.author}</header>
+        ${feedItem.message}
+        <footer>${feedItem.timestamp.toString()}</footer>
+    </article>
+</li>
+----
+
+[.notes]
+--
+* out of band swap
+* swap an element on the page (the news-feed)
+* swap afterbegin --> latest items first
+--
+
+== Modal dialogs
+
+== Modal dialogs
+
+* need to create the content on demand
+* e.g. confirmation dialog for a delete action
+* leverage htmx to get the content easily
+* use alpine to handle interaction with the modal
+* server answers with the modal content/dialog
+
+== Modal dialogs
+
+[source,html,highlight="2,3,4"]
+----
+<button
+    hx-get="/modal-dialogs"
+    hx-target="#modals-here"
+    hx-trigger="click"
+    class="btn primary">Open Modal</button>
+----
+
+== Modal dialogs
+
+image::modal-dialog.png[]
+
+== There is more
+
+* client side event triggers
+* transitions and animations
+* server send events
+* progressive enhancement
+* all declarative
+
+[.notes]
+--
+* but do not use hx-boost
+* as hypermedia exchanges are used you could strive for no-js enabled with reduced feature set/less comfort
+* e.g. forms, paging just uses regular links and replacing the whole page
+--
+
