@@ -9,7 +9,7 @@
 :revealjs_transition: fade
 :revealjs_controls: false
 :source-highlighter: highlight.js
-:highlightjsdir: _highlight
+:highlightjsdir: highlight
 :icons: font
 :imagesdir: images/
 :customcss: css/custom.css
