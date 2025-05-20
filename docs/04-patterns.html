@@ -413,7 +413,109 @@ ul.byline {
 ul.byline li + li {
   margin-top: 0.25em;
 }
-</style></head><body><div class="reveal"><div class="slides"><section id="_htmx_patterns"><h2>HTMX patterns</h2><div class="slide-content"><div class="paragraph"><p>DEMO TIME</p></div></div></section></div></div><script src="_reveal/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+</style></head><body><div class="reveal"><div class="slides"><section id="_htmx_patterns"><h2>HTMX patterns</h2></section>
+<section id="_form_validation"><h2>Form validation</h2><div class="slide-content"><div class="imageblock"><img src="form-empty.png" alt="form empty"></div></div></section>
+<section id="_form_validation_2"><h2>Form validation</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-html" data-lang="html">&lt;form action="/" method="post" id="hx-form"&gt;
+    &lt;fieldset&gt;
+        &lt;label&gt;Firstname
+        &lt;input
+                type="text"
+                hx-trigger="keyup changed delay:250ms"
+                hx-post="/"
+                hx-include="closest form"
+                hx-target="#hx-form"
+                hx-swap="morph"&gt;
+        &lt;/label&gt;
+    &lt;fieldset&gt;
+    &lt;button type="submit" value="Submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>using morph instead of default inner html replacement to keep selection and focus for example</p></li></ul></div></aside></div></section>
+<section id="_form_validation_3"><h2>Form validation</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">@HxRequest
+@PostMapping("")
+public String htmxPost(@Valid FormModel formModel, BindingResult bindingResult, Model model){
+    model.addAttribute("formModel", formModel);
+    model.addAttribute("validationResult", bindingResult);
+    return "form";
+}
+
+@PostMapping("")
+public String postIndex(@Valid FormModel formModel, BindingResult bindingResult, Model model){
+    // usual form handling with redirect
+}</code></pre></div></div></div></section>
+<section id="_form_validation_4"><h2>Form validation</h2><div class="slide-content"><div class="imageblock"><img src="form-validated.png" alt="form validated"></div></div></section>
+<section id="_pagination_sorting"><h2>Pagination, Sorting</h2><div class="slide-content"><div class="imageblock"><img src="table.png" alt="table"></div></div></section>
+<section id="_pagination_sorting_2"><h2>Pagination, Sorting</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-html" data-lang="html">&lt;table hx-target="#table-wrapper" hx-push-url="true" class="striped"&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;
+    @if (persons.getSort().getOrderFor("name") != null &amp;&amp; persons.getSort().getOrderFor("name").isDescending())
+    &lt;div hx-get="/tables?sort=name,asc&amp;size=${persons.getPageable().getPageSize()}&amp;page=${persons.getPageable().getPageNumber()}"&gt;
+          Name (V)
+    &lt;/div&gt;@endif&lt;/th&gt;&lt;tr&gt;&lt;/thead&gt;
+&lt;/table&gt;
+&lt;div role="group" hx-target="#table-wrapper" hx-push-url="true"&gt;
+    &lt;!-- omitted for brevity --&gt;
+    @if (persons.hasPrevious())
+        &lt;button
+        hx-get="/tables?size=?page=${persons.getPageable().getPageNumber()-1}&amp;${persons.getPageable().getPageSize()}&amp;sort=${persons.getPageable().getSort().toString().replace(": ", ",").trim().toLowerCase(Locale.ROOT)}"
+        &gt;Prev
+        &lt;/button&gt;
+    @else
+        &lt;button disabled&gt;Prev&lt;/button&gt;
+    @endif
+&lt;/div&gt;</code></pre></div></div></div></section>
+<section id="_pagination_sorting_3"><h2>Pagination, Sorting</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">@GetMapping
+public String index(Model model, Pageable pageable) {
+    Page&lt;Person&gt; page = personService.findAll(pageable);
+    model.addAttribute("persons", page);
+    model.addAttribute("pager", PagerModel.fromPage(page));
+    return "table/index";
+}
+@GetMapping
+@HxRequest
+public String table(Model model, Pageable pageable) {
+    Page&lt;Person&gt; page = personService.findAll(pageable);
+    model.addAttribute("persons", page);
+    model.addAttribute("pager", PagerModel.fromPage(page));
+    return "table/table";
+}</code></pre></div></div></div></section>
+<section id="_endless_scrolling"><h2>Endless scrolling</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-html" data-lang="html">@for(var personEntry : ForSupport.of(persons.getContent()))
+    @if (personEntry.isLast())
+        &lt;blockquote
+        hx-get="/endless-scrolling?page=${persons.getNumber() + 1}&amp;size=${persons.getSize()}&amp;sort=name,desc"
+        hx-trigger="intersect once"
+        hx-swap="afterend"
+        &gt;${personEntry.get().getQuote()}&lt;/blockquote&gt;
+    @else
+        &lt;blockquote&gt;${personEntry.get().getQuote()}&lt;/blockquote&gt;
+    @endif
+@endfor</code></pre></div></div></div></section>
+<section id="_realtime_updates"><h2>Realtime updates</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-html" data-lang="html">&lt;ul hx-ext="ws" ws-connect="/websockets/ws" id="news-feed"&gt;&lt;/ul&gt;</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">@Scheduled(fixedRate = 5000)
+public void updateNewsFeed(){
+    TemplateOutput output = new StringOutput();
+    templateEngine.render("feedItem.jte", Map.of("feedItem", randomFeedItem()), output);
+    websocketHolder.broadcastHtmlSnipped(output.toString());
+}</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>yes it is that simple</p></li></ul></div></aside></div></section>
+<section id="_realtime_updates_2"><h2>Realtime updates</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-html" data-lang="html">&lt;ul hx-ext="ws" ws-connect="/websockets/ws" id="news-feed"&gt;&lt;/ul&gt;</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="language-html" data-lang="html">@param com.github.atomfrede.spring_io_25_samples.RealtimeService.FeedItem feedItem
+&lt;li id="news-feed" hx-swap-oob="afterbegin"&gt;
+    &lt;article&gt;
+        &lt;header&gt;${feedItem.author}&lt;/header&gt;
+        ${feedItem.message}
+        &lt;footer&gt;${feedItem.timestamp.toString()}&lt;/footer&gt;
+    &lt;/article&gt;
+&lt;/li&gt;</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>out of band swap</p></li><li><p>swap an element on the page (the news-feed)</p></li><li><p>swap afterbegin -&#8594; latest items first</p></li></ul></div></aside></div></section>
+<section id="_modal_dialogs"><h2>Modal dialogs</h2></section>
+<section id="_modal_dialogs_2"><h2>Modal dialogs</h2><div class="slide-content"><div class="ulist"><ul><li><p>need to create the content on demand</p></li><li><p>e.g. confirmation dialog for a delete action</p></li><li><p>leverage htmx to get the content easily</p></li><li><p>use alpine to handle interaction with the modal</p></li><li><p>server answers with the modal content/dialog</p></li></ul></div></div></section>
+<section id="_modal_dialogs_3"><h2>Modal dialogs</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-html" data-lang="html">&lt;button
+    hx-get="/modal-dialogs"
+    hx-target="#modals-here"
+    hx-trigger="click"
+    class="btn primary"&gt;Open Modal&lt;/button&gt;</code></pre></div></div></div></section>
+<section id="_modal_dialogs_4"><h2>Modal dialogs</h2><div class="slide-content"><div class="imageblock"><img src="modal-dialog.png" alt="modal dialog"></div></div></section>
+<section id="_there_is_more"><h2>There is more</h2><div class="slide-content"><div class="ulist"><ul><li><p>client side event triggers</p></li><li><p>transitions and animations</p></li><li><p>server send events</p></li><li><p>progressive enhancement</p></li><li><p>all declarative</p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>but do not use hx-boost</p></li><li><p>as hypermedia exchanges are used you could strive for no-js enabled with reduced feature set/less comfort</p></li><li><p>e.g. forms, paging just uses regular links and replacing the whole page</p></li></ul></div></aside></div></section></div></div><script src="_reveal/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;

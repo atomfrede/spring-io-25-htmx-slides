@@ -483,45 +483,131 @@ We believe that many websites will <strong>benefit from the simplicity of server
     &lt;h1&gt;${page.getTitle()}&lt;/h1&gt;
     &lt;p&gt;Welcome to my example page!&lt;/p&gt;
 &lt;/body&gt;</code></pre></div></div></div></section>
-<section id="_howl_hypermedia_on_whatever_you_like"><h2>HOWL - Hypermedia on whatever you like</h2><div class="slide-content"><div class="ulist"><ul><li><p>Thymeleaf - the classic</p></li><li><p>JStachio - typesafe, extremely fast mustache</p></li><li><p>HTMLFLow - DSL approach (better use kotlin)</p></li><li><p>kotlinx.html - Pure kotlin</p></li><li><p>Qute - the quarkus one</p></li></ul></div></div></section>
-<section id="_htmx_the_rising_star" class="columns"><h2>HTMX - the rising star</h2><div class="slide-content"><div class="paragraph column"><p>2023</p></div>
-<div class="imageblock"><img src="images/htmx-2023.png" alt="htmx 2023"></div>
-<div class="paragraph column"><p>2024</p></div>
-<div class="imageblock"><img src="images/htmx-2024.png" alt="htmx 2024"></div>
-<aside class="notes"><div class="ulist"><ul><li><p>There is a lot of interest in the recent years</p></li><li><p>the predecessor intercooler.js did not gain that much traction</p></li></ul></div></aside></div></section>
-<section id="_source_code"><h2>Source Code</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="1,2,6,7,8,9,10" data-lang="html">&lt;form id="new-todo-form" th:action="@{/}"
-    method="post" th:object="${item}"&gt;
-    &lt;input id="new-todo-input" class="new-todo"
-        autocomplete="false"
-        name="title"
-        th:field="*{title}"
-        hx-target="#todo-list"
-        hx-swap="beforeend"
-        hx-post="/"
-        hx-trigger="keyup[key=='Enter']"
-    &gt;
-&lt;/form&gt;</code></pre></div></div></div></section>
-<section id="_next"><h2>Next</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="3|4,6" data-lang="html">&lt;a href="/manager/users/57/change-status"
-title="Benutzerstatus ändern"
-hx-get="/manager/users/57/change-status"
-hx-target="closest td"
-hx-swap="outerHTML"&gt;deaktiviert&lt;/a&gt;</code></pre></div></div></div></section>
-<section id="_java"><h2>Java</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="3|4,6" data-lang="java">public class Demo {
-    public static void main(final String... args) {
-        final Supplier supplier = () -&gt; "world";
-        final String message = String.format("Hello, %s!", supplier.get());
-        System.out.println(message);
-    }
+<section id="_howl_hypermedia_on_whatever_you_like"><h2>HOWL - Hypermedia on whatever you like</h2><div class="slide-content"><div class="ulist"><ul><li><p>Thymeleaf - the classic</p></li><li><p>JStachio - typesafe, extremely fast mustache</p></li><li><p>HTMLFLow - DSL approach (better use kotlin)</p></li><li><p>kotlinx.html - Pure kotlin</p></li><li><p>Qute - the quarkus one</p></li><li><p>Spring ViewComponents</p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>it should support "fragments"</p></li><li><p>typesafe is better</p></li><li><p>ViewComponents: UI Components build on server side using JTE</p></li><li><p>DSL approach looks promising</p></li></ul></div></aside></div></section>
+<section id="_client_side_statescripting"><h2>Client-side state/scripting?</h2><div class="slide-content"><div class="ulist"><ul><li><p>Plain/VanillaJS</p></li><li><p>alpine.js</p></li><li><p>stimulus (hotwired)</p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>sometimes client side state/scripting is needed</p></li><li><p>e.g. dropdowns</p></li><li><p>alpine fits well declaratively</p></li><li><p>stimulus controller + declaratively application</p></li></ul></div></aside></div></section>
+<section id="_htmx_patterns"><h2>HTMX patterns</h2></section>
+<section id="_form_validation"><h2>Form validation</h2><div class="slide-content"><div class="imageblock"><img src="images/form-empty.png" alt="form empty"></div></div></section>
+<section id="_form_validation_2"><h2>Form validation</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="1,13|6,7,8,9|10" data-lang="html">&lt;form action="/" method="post" id="hx-form"&gt;
+    &lt;fieldset&gt;
+        &lt;label&gt;Firstname
+        &lt;input
+                type="text"
+                hx-trigger="keyup changed delay:250ms"
+                hx-post="/"
+                hx-include="closest form"
+                hx-target="#hx-form"
+                hx-swap="morph"&gt;
+        &lt;/label&gt;
+    &lt;fieldset&gt;
+    &lt;button type="submit" value="Submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>using morph instead of default inner html replacement to keep selection and focus for example</p></li></ul></div></aside></div></section>
+<section id="_form_validation_3"><h2>Form validation</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="1,2,6,9" data-lang="java">@HxRequest
+@PostMapping("")
+public String htmxPost(@Valid FormModel formModel, BindingResult bindingResult, Model model){
+    model.addAttribute("formModel", formModel);
+    model.addAttribute("validationResult", bindingResult);
+    return "form";
+}
+
+@PostMapping("")
+public String postIndex(@Valid FormModel formModel, BindingResult bindingResult, Model model){
+    // usual form handling with redirect
 }</code></pre></div></div></div></section>
-<section id="_but_first"><h2>But first</h2><div class="slide-content"><div class="admonitionblock warning"><table><tr><td class="icon"><i class="fa fa-warning" title="Warning"></i></td><td class="content">This presentation is dangerous!</td></tr></table></div></div></section>
-<section id="_slide_title" class="important-text"><h2>Slide Title</h2><div class="slide-content"><div class="ulist"><ul><li><p>Some</p></li><li><p>Information</p></li></ul></div></div></section>
-<section id="_columns_with_size" class="columns"><h2>Columns with size</h2><div class="slide-content"><div class="openblock column is-one-third"><div class="content"><div class="ulist"><ul><li><p><strong>Kotlin</strong></p></li><li><p>Java</p></li><li><p>Scala</p></li></ul></div></div></div>
-<div class="openblock column"><div class="content"><div class="paragraph"><p>Programming language for Android, mobile cross-platform
-and web development, server-side, native,
-and data science. Open source forever Github.</p></div></div></div></div></section>
-<section id="_quote"><h2>Quote</h2><div class="slide-content"><div class="quoteblock"><div class="title">After landing the cloaked Klingon bird of prey in Golden Gate park:</div><blockquote>Everybody remember where we parked.</blockquote><div class="attribution"><cite>Star Trek IV: The Voyage Home</cite><br>&#8212; Captain James T. Kirk</div></div></div></section>
-<section id="_text"><h2>Text</h2><div class="slide-content"><div class="paragraph"><p>That is <strong>strong</strong> stuff!</p></div>
-<div class="paragraph"><p>That is <em>really strong</em> stuff!</p></div></div></section></div></div><script src="_reveal/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+<section id="_form_validation_4"><h2>Form validation</h2><div class="slide-content"><div class="imageblock"><img src="images/form-validated.png" alt="form validated"></div></div></section>
+<section id="_pagination_sorting"><h2>Pagination, Sorting</h2><div class="slide-content"><div class="imageblock"><img src="images/table.png" alt="table"></div></div></section>
+<section id="_pagination_sorting_2"><h2>Pagination, Sorting</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="1,4|12" data-lang="html">&lt;table hx-target="#table-wrapper" hx-push-url="true" class="striped"&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th scope="col"&gt;
+    @if (persons.getSort().getOrderFor("name") != null &amp;&amp; persons.getSort().getOrderFor("name").isDescending())
+    &lt;div hx-get="/tables?sort=name,asc&amp;size=${persons.getPageable().getPageSize()}&amp;page=${persons.getPageable().getPageNumber()}"&gt;
+          Name (V)
+    &lt;/div&gt;@endif&lt;/th&gt;&lt;tr&gt;&lt;/thead&gt;
+&lt;/table&gt;
+&lt;div role="group" hx-target="#table-wrapper" hx-push-url="true"&gt;
+    &lt;!-- omitted for brevity --&gt;
+    @if (persons.hasPrevious())
+        &lt;button
+        hx-get="/tables?size=?page=${persons.getPageable().getPageNumber()-1}&amp;${persons.getPageable().getPageSize()}&amp;sort=${persons.getPageable().getSort().toString().replace(": ", ",").trim().toLowerCase(Locale.ROOT)}"
+        &gt;Prev
+        &lt;/button&gt;
+    @else
+        &lt;button disabled&gt;Prev&lt;/button&gt;
+    @endif
+&lt;/div&gt;</code></pre></div></div></div></section>
+<section id="_pagination_sorting_3"><h2>Pagination, Sorting</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="3,6|9,11,14" data-lang="java">@GetMapping
+public String index(Model model, Pageable pageable) {
+    Page&lt;Person&gt; page = personService.findAll(pageable);
+    model.addAttribute("persons", page);
+    model.addAttribute("pager", PagerModel.fromPage(page));
+    return "table/index";
+}
+@GetMapping
+@HxRequest
+public String table(Model model, Pageable pageable) {
+    Page&lt;Person&gt; page = personService.findAll(pageable);
+    model.addAttribute("persons", page);
+    model.addAttribute("pager", PagerModel.fromPage(page));
+    return "table/table";
+}</code></pre></div></div></div></section>
+<section id="_endless_scrolling"><h2>Endless scrolling</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="1,2|4,5,6" data-lang="html">@for(var personEntry : ForSupport.of(persons.getContent()))
+    @if (personEntry.isLast())
+        &lt;blockquote
+        hx-get="/endless-scrolling?page=${persons.getNumber() + 1}&amp;size=${persons.getSize()}&amp;sort=name,desc"
+        hx-trigger="intersect once"
+        hx-swap="afterend"
+        &gt;${personEntry.get().getQuote()}&lt;/blockquote&gt;
+    @else
+        &lt;blockquote&gt;${personEntry.get().getQuote()}&lt;/blockquote&gt;
+    @endif
+@endfor</code></pre></div></div></div></section>
+<section id="_realtime_updates"><h2>Realtime updates</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-lang="html">&lt;ul hx-ext="ws" ws-connect="/websockets/ws" id="news-feed"&gt;&lt;/ul&gt;</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="1,4,5" data-lang="java">@Scheduled(fixedRate = 5000)
+public void updateNewsFeed(){
+    TemplateOutput output = new StringOutput();
+    templateEngine.render("feedItem.jte", Map.of("feedItem", randomFeedItem()), output);
+    websocketHolder.broadcastHtmlSnipped(output.toString());
+}</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>yes it is that simple</p></li></ul></div></aside></div></section>
+<section id="_realtime_updates_2"><h2>Realtime updates</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-lang="html">&lt;ul hx-ext="ws" ws-connect="/websockets/ws" id="news-feed"&gt;&lt;/ul&gt;</code></pre></div></div>
+<div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="2" data-lang="html">@param com.github.atomfrede.spring_io_25_samples.RealtimeService.FeedItem feedItem
+&lt;li id="news-feed" hx-swap-oob="afterbegin"&gt;
+    &lt;article&gt;
+        &lt;header&gt;${feedItem.author}&lt;/header&gt;
+        ${feedItem.message}
+        &lt;footer&gt;${feedItem.timestamp.toString()}&lt;/footer&gt;
+    &lt;/article&gt;
+&lt;/li&gt;</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>out of band swap</p></li><li><p>swap an element on the page (the news-feed)</p></li><li><p>swap afterbegin -&#8594; latest items first</p></li></ul></div></aside></div></section>
+<section id="_modal_dialogs"><h2>Modal dialogs</h2></section>
+<section id="_modal_dialogs_2"><h2>Modal dialogs</h2><div class="slide-content"><div class="ulist"><ul><li><p>need to create the content on demand</p></li><li><p>e.g. confirmation dialog for a delete action</p></li><li><p>leverage htmx to get the content easily</p></li><li><p>use alpine to handle interaction with the modal</p></li><li><p>server answers with the modal content/dialog</p></li></ul></div></div></section>
+<section id="_modal_dialogs_3"><h2>Modal dialogs</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="2,3,4" data-lang="html">&lt;button
+    hx-get="/modal-dialogs"
+    hx-target="#modals-here"
+    hx-trigger="click"
+    class="btn primary"&gt;Open Modal&lt;/button&gt;</code></pre></div></div></div></section>
+<section id="_modal_dialogs_4"><h2>Modal dialogs</h2><div class="slide-content"><div class="imageblock"><img src="images/modal-dialog.png" alt="modal dialog"></div></div></section>
+<section id="_there_is_more"><h2>There is more</h2><div class="slide-content"><div class="ulist"><ul><li><p>client side event triggers</p></li><li><p>transitions and animations</p></li><li><p>server send events</p></li><li><p>progressive enhancement</p></li><li><p>all declarative</p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>but do not use hx-boost</p></li><li><p>as hypermedia exchanges are used you could strive for no-js enabled with reduced feature set/less comfort</p></li><li><p>e.g. forms, paging just uses regular links and replacing the whole page</p></li></ul></div></aside></div></section>
+<section id="_conclusion"><h2>Conclusion</h2></section>
+<section id="_does_it_spark_joy_4"><h2>Does it spark joy?</h2><div class="slide-content"><div class="ulist"><ul><li><p>removed a lot of complexity</p></li><li><p>pushed the barrier for SPAs further</p></li><li><p>ability to move faster (no contracts)</p></li><li><p>invest in long living, framework agnostic tech(niques)</p></li><li><p>team(s) are not split</p></li></ul></div>
+<div class="imageblock"><img src="images/types2.png" alt="types2"></div></div></section>
+<section id="_when_to_use_it"><h2>When to use it?</h2><div class="slide-content"><div class="ulist"><ul><li><p>Form based applications (aka "enterprise" applications)</p></li><li><p>CRUD</p></li><li><p>e-commerce</p></li><li><p>Nested UI elements, controlled updates</p></li><li><p>Must use <strong>hypermedia exchanges</strong> as primary communication</p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>"uncontrolled" or unrestricted updates may lead to jquery like issues</p></li></ul></div></aside></div></section>
+<section id="_and_when_not_to_use_it"><h2>And when not to use it?</h2><div class="slide-content"><div class="ulist"><ul><li><p>Offline requirement</p></li><li><p>Many dynamic, interdependent UI elements</p></li><li><p>Updated very frequently (e.g. Miro)</p></li><li><p>Be aware of certain security implications</p><div class="ulist"><ul><li><p>CSP, hx-on/trigger, XSS, HTML injection</p></li></ul></div></li><li><p>Combine these approaches ("dynamic islands")</p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>most of the time, starting with hypermedia is good enough</p></li><li><p>think of the team structure -&#8594; full stack</p></li></ul></div></aside></div></section>
+<section id="_must_read" class="columns"><h2>Must Read</h2><div class="slide-content"><div class="imageblock thumb"><img src="images/hypermedia-systems-cover.png" alt="250" width="350"></div>
+<div class="imageblock thumb"><img src="images/modern-frontends-cover.png" alt="250" width="350"></div></div></section>
+<section id="_links"><h2>Links</h2><div class="slide-content"><div class="ulist"><ul><li><p><a href="https://htmx.org/">htmx.org</a></p></li><li><p><a href="https://www.wimdeblauwe.com/books/modern-frontends-with-htmx/">Modern Frontends with HTMX</a></p></li><li><p><a href="https://hypermedia.systems">Hypermedia Systems</a></p></li><li><p><a href="https://github.com/dashorst/funwithflags">Fun with Flags (Quarkus, HTMX, Websockets)</a></p></li><li><p><a href="https://tschuehly.gitbook.io/server-side-spring-htmx-workshop">HTMX + ViewComponents Workshop</a></p></li><li><p><a href="https://chrisdone.com/posts/htmx-critique/">A modest critique of Htmx</a></p></li><li><p><a href="https://unplannedobsolescence.com/blog/less-htmx-is-more/">Less HTMX is More</a></p></li><li><p><a href="https://www.sjoerdlangkemper.nl/2024/06/26/htmx-content-security-policy/">HTMX does not play well with content security policy</a></p></li></ul></div></div></section>
+<section id="_example_code" class="columns"><h2>Example Code</h2><div class="slide-content"><div class="ulist column"><ul><li><p><a href="https://github.com/atomfrede/spring-io-25-samples">GitHub</a></p></li><li><p><a href="https://codeberg.org/atomfrede/spring-io-25-sample">Codeberg</a></p></li></ul></div>
+<div class="imageblock thumb"><img src="images/gh-code.png" alt="250" width="250"></div>
+<div class="imageblock thumb"><img src="images/codeberg-code.png" alt="250" width="250"></div></div></section>
+<section id="_thanks" class="columns"><h2>Thanks</h2><div class="slide-content"><div class="ulist column"><ul><li><p>Questions?</p></li><li><p>Slides ➡️</p></li></ul></div>
+<div class="imageblock column"><img src="images/slides-code.png" alt="250" width="250"></div>
+<aside class="notes"><div class="paragraph"><p>Thanks for taking part in the last session for today
+after a long day attending another talk is great</p></div></aside></div></section>
+<section id="_it_sparks_joy" data-background-image="images/it-sparks-joy.png" data-background-size="cover"></section></div></div><script src="_reveal/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
@@ -1190,4 +1276,6 @@ hljs.configure({
   ignoreUnescapedHTML: true,
 });
 hljs.highlightAll();
+</script><script>
+    // Reveal.configure({ showNotes: 'separate-page' });
 </script></body></html>
