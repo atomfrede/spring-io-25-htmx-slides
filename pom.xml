@@ -29,68 +29,6 @@
                 <defaultGoal>process-resources</defaultGoal>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-resources-plugin</artifactId>
-                        <version>3.3.1</version>
-                        <executions>
-                            <execution>
-                                <id>copy-reveal</id>
-                                <phase>process-resources</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>${basedir}/target/generated-docs/_reveal</outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>${basedir}/src/docs/asciidoc/_reveal</directory>
-                                            <includes>
-                                                <include>**/*.*</include>
-                                            </includes>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>copy-hl</id>
-                                <phase>process-resources</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>${basedir}/target/generated-docs/_highlight</outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>${basedir}/src/docs/asciidoc/_highlight</directory>
-                                            <includes>
-                                                <include>**/*.*</include>
-                                            </includes>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>copy-shared</id>
-                                <phase>process-resources</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>${basedir}/target/generated-docs/_shared</outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>${basedir}/src/docs/asciidoc/_shared</directory>
-                                            <includes>
-                                                <include>**/*.*</include>
-                                            </includes>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <plugin>
                         <groupId>org.asciidoctor</groupId>
                         <artifactId>asciidoctor-maven-plugin</artifactId>
                         <version>${asciidoctor.maven.plugin.version}</version>
@@ -144,7 +82,7 @@
                                     </requires>
                                     <attributes>
                                         <revealjsdir>
-                                            _reveal
+                                            reveal
                                         </revealjsdir>
                                     </attributes>
                                 </configuration>
@@ -194,7 +132,7 @@
                                     </requires>
                                     <attributes>
                                         <revealjsdir>
-                                            _reveal
+                                            reveal
                                         </revealjsdir>
                                     </attributes>
                                 </configuration>

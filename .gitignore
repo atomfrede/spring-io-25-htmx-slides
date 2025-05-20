@@ -262,9 +262,9 @@ gradle-app.setting
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,java,gradle,node,macos,linux
 
-!src/docs/asciidoc/_reveal/dist
-!docs/_reveal/dist
-!src/docs/asciidoc/_reveal/plugin
-!docs/_reveal/plugin
-!src/docs/asciidoc/_highlight
-!docs/_highlight/
+!src/docs/asciidoc/reveal/dist
+!docs/reveal/dist
+!src/docs/asciidoc/reveal/plugin
+!docs/reveal/plugin
+!src/docs/asciidoc/highlight
+!docs/highlight/
