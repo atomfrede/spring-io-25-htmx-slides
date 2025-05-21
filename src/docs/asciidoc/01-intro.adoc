@@ -15,12 +15,26 @@
 [%notitle]
 == Modern Frontend Development
 
-image::spark-joy-meme.jpg[background, size=cover]
+++++
+<!--<h2 class="r-fit-text">😱 😮‍💨</h2>-->
+++++
+
+image::logos.png[background, size=cover]
+
+[%notitle]
+== Modern Frontend Development
+
+++++
+<h2 class="r-fit-text">😱 😮‍💨</h2>
+++++
+
+image::logos.png[background, size=cover]
 
 [%notitle]
 == Does it spark joy?
 
-image::logos.png[background, size=cover]
+image::spark-joy-meme.jpg[background, size=cover]
+
 
 [.notes]
 --
@@ -28,6 +42,7 @@ image::logos.png[background, size=cover]
 * a lot have come and go, but have been adapted
 * make them work together and keep it up is hard
 * a lot of dependencies to manage
+* hard to keep up with latest "trends"
 --
 
 == Does it spark joy?
