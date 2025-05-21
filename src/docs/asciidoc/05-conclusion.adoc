@@ -38,14 +38,25 @@ image::types2.png[]
 * think of the team structure --> full stack
 --
 
-[.columns]
 == Must Read
 
-[.column]
-image::hypermedia-systems-cover.png[250,350,role=thumb]
+++++
+<div class="r-stack">
+++++
+image::books.png[role=thumb]
+[%step]
+image::modern-frontends-discount-code.png[role=modern-frontends-thumb]
+++++
+</div>
+++++
 
-[.column]
-image::modern-frontends-cover.png[250,350,role=thumb]
+[notes
+--
+* Wim shows how to build hypermedia driven applications with spring boot with ease
+* Hypermedia builds the foundation and concepts building different examples with python and flask
+* both are very valueable reads
+* Wim contacted me this morning and you can get a 20% discount just for Spring I/O!
+--
 
 == Links
 
