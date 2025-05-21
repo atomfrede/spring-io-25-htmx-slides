@@ -16,10 +16,10 @@ ____
 
 == History lesson
 
-* Ted Nelson coined the term footnote:hypertext[https://en.wikipedia.org/wiki/Hypertext] in 1963 footnote:ted[https://en.wikipedia.org/wiki/Ted_Nelson]
+* Ted Nelsonfootnote:ted[https://en.wikipedia.org/wiki/Ted_Nelson] coined the term in 1963footnote:hypertext[https://en.wikipedia.org/wiki/Hypertext]
 * *Non-linear branching model*
-* Project Xanadu footnote:xanadu[https://en.wikipedia.org/wiki/Project_Xanadu]
-* Can be traced back to the 40ties and the idea of the memex footnote:memex[https://en.wikipedia.org/wiki/Memex]
+* Project Xanadufootnote:xanadu[https://en.wikipedia.org/wiki/Project_Xanadu]
+* Can be traced back to the 40ties and the idea of the memexfootnote:memex[https://en.wikipedia.org/wiki/Memex]
 
 [.notes]
 --
