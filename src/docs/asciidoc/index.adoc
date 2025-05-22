@@ -40,13 +40,19 @@ include::_shared/_title_footer.adoc[]
 image:duke-pb.png[width=200]
 image:jhipster.png[width=200]
 
+[.notes]
+--
+* wonderful family
+* going again for a triathlon this year
+--
+
 == Agenda
 
 1. Modern Frontend Development
 2. Hypermedia
 3. HTMX, JTE
-5. HTMX Patterns
-4. Conclusion
+4. HTMX Patterns
+5. Conclusion
 
 [.notes]
 --

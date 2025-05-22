@@ -32,6 +32,14 @@ ____
 </button>
 ----
 
+[.notes]
+--
+* When the button is clicked
+* a request to `/clicked` is issued
+* the result will be swapped into element with id `#parent-div`
+* and it will replace the whole element (not just the content)
+--
+
 == JTE
 
 * There are a lot of template engines for java/the jvm
@@ -45,9 +53,6 @@ ____
 * Without type safety refactoring becomes a nightmare
 * can't see what a page really needs
 * reflection does not play well with native images/graal vm
-* alternatives e.g. JStachio when you would like to use a known template syntax
-* thymeleaf for feature rich and widespread support
-* qute for quarkus applications
 --
 
 == JTE
@@ -84,6 +89,7 @@ ____
 * it should support "fragments", partial HTML with ease
 * typesafe is better
 * ViewComponents: UI Components build on server side using JTE (Thymeleaf)
+* VC: Locality of behaviour, all together at source level
 * DSL approach looks promising
 --
 

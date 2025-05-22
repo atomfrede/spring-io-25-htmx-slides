@@ -429,7 +429,7 @@ ul.byline li + li {
     &lt;fieldset&gt;
     &lt;button type="submit" value="Submit"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;</code></pre></div></div>
-<aside class="notes"><div class="ulist"><ul><li><p>using morph instead of default inner html replacement to keep selection and focus for example</p></li></ul></div></aside></div></section>
+<aside class="notes"><div class="ulist"><ul><li><p>normal form, can be used with usual submit w/o javascript</p></li><li><p>trigger a <code>post</code> to <code>/</code> with <strong>all</strong> form parameters of the nearest form element</p></li><li><p>targeting the form itselt</p></li><li><p>using morph instead of default inner html replacement to keep selection and focus for example</p></li></ul></div></aside></div></section>
 <section id="_form_validation_3"><h2>Form validation</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-java" data-lang="java">@HxRequest
 @PostMapping("")
 public String htmxPost(@Valid FormModel formModel, BindingResult bindingResult, Model model){
@@ -441,7 +441,8 @@ public String htmxPost(@Valid FormModel formModel, BindingResult bindingResult, 
 @PostMapping("")
 public String postIndex(@Valid FormModel formModel, BindingResult bindingResult, Model model){
     // usual form handling with redirect
-}</code></pre></div></div></div></section>
+}</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>usual form submit with redirect</p></li><li><p><code>@HxRequest</code> from 3rd Party library, makes sure that endpoint is only called when htmx issued the request using a dedicated <code>Header</code> attribute (<code>hx-request</code>)</p></li></ul></div></aside></div></section>
 <section id="_form_validation_4"><h2>Form validation</h2><div class="slide-content"><div class="imageblock"><img src="form-validated.png" alt="form validated"></div></div></section>
 <section id="_pagination_sorting"><h2>Pagination, Sorting</h2><div class="slide-content"><div class="imageblock"><img src="table.png" alt="table"></div></div></section>
 <section id="_pagination_sorting_2"><h2>Pagination, Sorting</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-html" data-lang="html">&lt;table hx-target="#table-wrapper" hx-push-url="true" class="striped"&gt;
@@ -495,7 +496,7 @@ public void updateNewsFeed(){
     templateEngine.render("feedItem.jte", Map.of("feedItem", randomFeedItem()), output);
     websocketHolder.broadcastHtmlSnipped(output.toString());
 }</code></pre></div></div>
-<aside class="notes"><div class="ulist"><ul><li><p>yes it is that simple</p></li></ul></div></aside></div></section>
+<aside class="notes"><div class="ulist"><ul><li><p>yes it is that simple</p></li><li><p>instead of broadcast you could just send items some specific client as well (all done on server side)</p></li></ul></div></aside></div></section>
 <section id="_realtime_updates_2"><h2>Realtime updates</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-html" data-lang="html">&lt;ul hx-ext="ws" ws-connect="/websockets/ws" id="news-feed"&gt;&lt;/ul&gt;</code></pre></div></div>
 <div class="listingblock"><div class="content"><pre class="highlight"><code class="language-html" data-lang="html">@param com.github.atomfrede.spring_io_25_samples.RealtimeService.FeedItem feedItem
 &lt;li id="news-feed" hx-swap-oob="afterbegin"&gt;
@@ -505,9 +506,9 @@ public void updateNewsFeed(){
         &lt;footer&gt;${feedItem.timestamp.toString()}&lt;/footer&gt;
     &lt;/article&gt;
 &lt;/li&gt;</code></pre></div></div>
-<aside class="notes"><div class="ulist"><ul><li><p>out of band swap</p></li><li><p>swap an element on the page (the news-feed)</p></li><li><p>swap afterbegin -&#8594; latest items first</p></li></ul></div></aside></div></section>
+<aside class="notes"><div class="ulist"><ul><li><p>out of band swap</p></li><li><p>swap an element on the page (the news-feed)</p></li><li><p>can be used in general to piggy back additional parts of the page to be updated</p><div class="ulist"><ul><li><p>use with care(!)</p></li></ul></div></li><li><p>swap afterbegin -&#8594; latest items first</p></li></ul></div></aside></div></section>
 <section id="_modal_dialogs"><h2>Modal dialogs</h2></section>
-<section id="_modal_dialogs_2"><h2>Modal dialogs</h2><div class="slide-content"><div class="ulist"><ul><li><p>need to create the content on demand</p></li><li><p>e.g. confirmation dialog for a delete action</p></li><li><p>leverage <strong>htmx to retrieve the content</strong></p></li><li><p>use <strong>alpine to handle interaction</strong> with the modal</p></li><li><p>server answers with the modal content/dialog</p></li></ul></div></div></section>
+<section id="_modal_dialogs_2"><h2>Modal dialogs</h2><div class="slide-content"><div class="ulist"><ul><li><p>need to <strong>create the content on demand</strong></p></li><li><p>e.g. confirmation dialog for a delete action</p></li><li><p>leverage <strong>htmx to retrieve the content</strong></p></li><li><p>use <strong>alpine to handle interaction</strong> with the modal</p></li><li><p>server answers with the modal content/dialog</p></li></ul></div></div></section>
 <section id="_modal_dialogs_3"><h2>Modal dialogs</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-html" data-lang="html">&lt;button
     hx-get="/modal-dialogs"
     hx-target="#modals-here"

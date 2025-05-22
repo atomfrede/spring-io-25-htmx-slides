@@ -436,7 +436,8 @@ ul.byline li + li {
 </script></div></section>
 <section id="_about_me" class="columns"><h2>About Me</h2><div class="slide-content"><div class="ulist column is-two-thirds"><ul><li><p>👨‍👩‍👧‍👦 🏊‍♂️ 🚴 🏃</p></li><li><p>Software Architect @adesso SE</p></li><li><p>JUG Paderborn Co-Organizer</p></li><li><p>JHipster Board Member</p></li></ul></div>
 <div class="paragraph column"><p><span class="image"><img src="images/duke-pb.png" alt="duke pb" width="200"></span>
-<span class="image"><img src="images/jhipster.png" alt="jhipster" width="200"></span></p></div></div></section>
+<span class="image"><img src="images/jhipster.png" alt="jhipster" width="200"></span></p></div>
+<aside class="notes"><div class="ulist"><ul><li><p>wonderful family</p></li><li><p>going again for a triathlon this year</p></li></ul></div></aside></div></section>
 <section id="_agenda"><h2>Agenda</h2><div class="slide-content"><div class="olist arabic"><ol class="arabic"><li><p>Modern Frontend Development</p></li><li><p>Hypermedia</p></li><li><p>HTMX, JTE</p></li><li><p>HTMX Patterns</p></li><li><p>Conclusion</p></li></ol></div>
 <aside class="notes"><div class="ulist"><ul><li><p>Modern frontend development &amp; complexity</p></li><li><p>What is hypermedia &amp; hypermedia controls</p></li><li><p>Why JTE, What is HTMX?</p></li><li><p>Typical patterns involved in typical web applications</p></li><li><p>Conclusion</p></li></ul></div></aside></div></section>
 <section id="_modern_frontend_development"><h2>Modern Frontend Development</h2><div class="slide-content"><div class="ulist"><ul><li><p>SPAs are often use "by default"</p></li><li><p>API Churn</p></li><li><p>Lot of tools, frameworks involved</p></li><li><p>Teamsplit</p></li></ul></div>
@@ -471,9 +472,10 @@ We believe that many websites will <strong>benefit from the simplicity of server
     hx-target="#parent-div"
     hx-swap="outerHTML"&gt;
     Click Me!
-&lt;/button&gt;</code></pre></div></div></div></section>
+&lt;/button&gt;</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>When the button is clicked</p></li><li><p>a request to <code>/clicked</code> is issued</p></li><li><p>the result will be swapped into element with id <code>#parent-div</code></p></li><li><p>and it will replace the whole element (not just the content)</p></li></ul></div></aside></div></section>
 <section id="_jte"><h2>JTE</h2><div class="slide-content"><div class="ulist"><ul><li><p>There are a lot of template engines for java/the jvm</p></li><li><p>Most of them are very mature</p></li><li><p>But nearly none of them is typesafe</p></li><li><p>Many use reflection</p></li><li><p><strong>does it spark joy?</strong></p></li></ul></div>
-<aside class="notes"><div class="ulist"><ul><li><p>Without type safety refactoring becomes a nightmare</p></li><li><p>can&#8217;t see what a page really needs</p></li><li><p>reflection does not play well with native images/graal vm</p></li><li><p>alternatives e.g. JStachio when you would like to use a known template syntax</p></li><li><p>thymeleaf for feature rich and widespread support</p></li><li><p>qute for quarkus applications</p></li></ul></div></aside></div></section>
+<aside class="notes"><div class="ulist"><ul><li><p>Without type safety refactoring becomes a nightmare</p></li><li><p>can&#8217;t see what a page really needs</p></li><li><p>reflection does not play well with native images/graal vm</p></li></ul></div></aside></div></section>
 <section id="_jte_2"><h2>JTE</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-lang="html">@import org.example.Page
 
 @param Page page
@@ -489,7 +491,7 @@ We believe that many websites will <strong>benefit from the simplicity of server
     &lt;p&gt;Welcome to my example page!&lt;/p&gt;
 &lt;/body&gt;</code></pre></div></div></div></section>
 <section id="_howl_hypermedia_on_whatever_you_like"><h2>HOWL - Hypermedia on whatever you like</h2><div class="slide-content"><div class="ulist"><ul><li><p>Thymeleaf - the feature-rich classic</p></li><li><p>JStachio - typesafe, fast mustache</p></li><li><p>HTMLFLow - DSL approach (better use kotlin)</p></li><li><p>kotlinx.html - Pure kotlin</p></li><li><p>Qute - the quarkus one</p></li><li><p>Spring ViewComponents</p></li></ul></div>
-<aside class="notes"><div class="ulist"><ul><li><p>it should support "fragments", partial HTML with ease</p></li><li><p>typesafe is better</p></li><li><p>ViewComponents: UI Components build on server side using JTE (Thymeleaf)</p></li><li><p>DSL approach looks promising</p></li></ul></div></aside></div></section>
+<aside class="notes"><div class="ulist"><ul><li><p>it should support "fragments", partial HTML with ease</p></li><li><p>typesafe is better</p></li><li><p>ViewComponents: UI Components build on server side using JTE (Thymeleaf)</p></li><li><p>VC: Locality of behaviour, all together at source level</p></li><li><p>DSL approach looks promising</p></li></ul></div></aside></div></section>
 <section id="_client_side_statescripting"><h2>Client-side state/scripting?</h2><div class="slide-content"><div class="ulist"><ul><li><p>Plain/VanillaJS</p></li><li><p>alpine.js</p></li><li><p>stimulus (hotwired)</p></li></ul></div>
 <aside class="notes"><div class="ulist"><ul><li><p>sometimes client side state/scripting is needed</p></li><li><p>e.g. dropdowns</p></li><li><p>alpine fits well declaratively</p></li><li><p>stimulus controller + declaratively application</p></li></ul></div></aside></div></section>
 <section id="_htmx_patterns"><h2>HTMX patterns</h2></section>
@@ -508,7 +510,7 @@ We believe that many websites will <strong>benefit from the simplicity of server
     &lt;fieldset&gt;
     &lt;button type="submit" value="Submit"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;</code></pre></div></div>
-<aside class="notes"><div class="ulist"><ul><li><p>using morph instead of default inner html replacement to keep selection and focus for example</p></li></ul></div></aside></div></section>
+<aside class="notes"><div class="ulist"><ul><li><p>normal form, can be used with usual submit w/o javascript</p></li><li><p>trigger a <code>post</code> to <code>/</code> with <strong>all</strong> form parameters of the nearest form element</p></li><li><p>targeting the form itselt</p></li><li><p>using morph instead of default inner html replacement to keep selection and focus for example</p></li></ul></div></aside></div></section>
 <section id="_form_validation_3"><h2>Form validation</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-java hljs" data-noescape="true" data-line-numbers="1,2,6,9" data-lang="java">@HxRequest
 @PostMapping("")
 public String htmxPost(@Valid FormModel formModel, BindingResult bindingResult, Model model){
@@ -520,7 +522,8 @@ public String htmxPost(@Valid FormModel formModel, BindingResult bindingResult, 
 @PostMapping("")
 public String postIndex(@Valid FormModel formModel, BindingResult bindingResult, Model model){
     // usual form handling with redirect
-}</code></pre></div></div></div></section>
+}</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>usual form submit with redirect</p></li><li><p><code>@HxRequest</code> from 3rd Party library, makes sure that endpoint is only called when htmx issued the request using a dedicated <code>Header</code> attribute (<code>hx-request</code>)</p></li></ul></div></aside></div></section>
 <section id="_form_validation_4"><h2>Form validation</h2><div class="slide-content"><div class="imageblock"><img src="images/form-validated.png" alt="form validated"></div></div></section>
 <section id="_pagination_sorting"><h2>Pagination, Sorting</h2><div class="slide-content"><div class="imageblock"><img src="images/table.png" alt="table"></div></div></section>
 <section id="_pagination_sorting_2"><h2>Pagination, Sorting</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="1,4|12" data-lang="html">&lt;table hx-target="#table-wrapper" hx-push-url="true" class="striped"&gt;
@@ -574,7 +577,7 @@ public void updateNewsFeed(){
     templateEngine.render("feedItem.jte", Map.of("feedItem", randomFeedItem()), output);
     websocketHolder.broadcastHtmlSnipped(output.toString());
 }</code></pre></div></div>
-<aside class="notes"><div class="ulist"><ul><li><p>yes it is that simple</p></li></ul></div></aside></div></section>
+<aside class="notes"><div class="ulist"><ul><li><p>yes it is that simple</p></li><li><p>instead of broadcast you could just send items some specific client as well (all done on server side)</p></li></ul></div></aside></div></section>
 <section id="_realtime_updates_2"><h2>Realtime updates</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-lang="html">&lt;ul hx-ext="ws" ws-connect="/websockets/ws" id="news-feed"&gt;&lt;/ul&gt;</code></pre></div></div>
 <div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="2" data-lang="html">@param com.github.atomfrede.spring_io_25_samples.RealtimeService.FeedItem feedItem
 &lt;li id="news-feed" hx-swap-oob="afterbegin"&gt;
@@ -584,9 +587,9 @@ public void updateNewsFeed(){
         &lt;footer&gt;${feedItem.timestamp.toString()}&lt;/footer&gt;
     &lt;/article&gt;
 &lt;/li&gt;</code></pre></div></div>
-<aside class="notes"><div class="ulist"><ul><li><p>out of band swap</p></li><li><p>swap an element on the page (the news-feed)</p></li><li><p>swap afterbegin -&#8594; latest items first</p></li></ul></div></aside></div></section>
+<aside class="notes"><div class="ulist"><ul><li><p>out of band swap</p></li><li><p>swap an element on the page (the news-feed)</p></li><li><p>can be used in general to piggy back additional parts of the page to be updated</p><div class="ulist"><ul><li><p>use with care(!)</p></li></ul></div></li><li><p>swap afterbegin -&#8594; latest items first</p></li></ul></div></aside></div></section>
 <section id="_modal_dialogs"><h2>Modal dialogs</h2></section>
-<section id="_modal_dialogs_2"><h2>Modal dialogs</h2><div class="slide-content"><div class="ulist"><ul><li><p>need to create the content on demand</p></li><li><p>e.g. confirmation dialog for a delete action</p></li><li><p>leverage <strong>htmx to retrieve the content</strong></p></li><li><p>use <strong>alpine to handle interaction</strong> with the modal</p></li><li><p>server answers with the modal content/dialog</p></li></ul></div></div></section>
+<section id="_modal_dialogs_2"><h2>Modal dialogs</h2><div class="slide-content"><div class="ulist"><ul><li><p>need to <strong>create the content on demand</strong></p></li><li><p>e.g. confirmation dialog for a delete action</p></li><li><p>leverage <strong>htmx to retrieve the content</strong></p></li><li><p>use <strong>alpine to handle interaction</strong> with the modal</p></li><li><p>server answers with the modal content/dialog</p></li></ul></div></div></section>
 <section id="_modal_dialogs_3"><h2>Modal dialogs</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlightjs highlight"><code class="language-html hljs" data-noescape="true" data-line-numbers="2,3,4" data-lang="html">&lt;button
     hx-get="/modal-dialogs"
     hx-target="#modals-here"
@@ -600,14 +603,13 @@ public void updateNewsFeed(){
 <div class="imageblock"><img src="images/types2.png" alt="types2"></div></div></section>
 <section id="_when_to_use_it"><h2>When to use it?</h2><div class="slide-content"><div class="ulist"><ul><li><p>Form based applications (aka "enterprise" applications)</p></li><li><p>CRUD</p></li><li><p>e-commerce</p></li><li><p>Nested UI elements, controlled updates</p></li><li><p>Must use <strong>hypermedia exchanges</strong> as primary communication</p></li></ul></div>
 <aside class="notes"><div class="ulist"><ul><li><p>"uncontrolled" or unrestricted updates may lead to jquery like issues</p></li></ul></div></aside></div></section>
-<section id="_and_when_not_to_use_it"><h2>And when not to use it?</h2><div class="slide-content"><div class="ulist"><ul><li><p>Offline requirement</p></li><li><p>Many dynamic, interdependent UI elements</p></li><li><p>Updated very frequently (e.g. Miro)</p></li><li><p>Be aware of certain security implications</p><div class="ulist"><ul><li><p>CSP, hx-on/trigger, XSS, HTML injection</p></li></ul></div></li><li><p>Combine these approaches ("dynamic islands")</p></li></ul></div>
-<aside class="notes"><div class="ulist"><ul><li><p>most of the time, starting with hypermedia is good enough</p></li><li><p>think of the team structure -&#8594; full stack</p></li></ul></div></aside></div></section>
+<section id="_and_when_not_to_use_it"><h2>And when not to use it?</h2><div class="slide-content"><div class="ulist"><ul><li><p>Offline requirement</p></li><li><p>Many dynamic, interdependent UI elements</p></li><li><p>Updated very frequently (e.g. Miro)</p></li><li><p>Be aware of certain security implications</p><div class="ulist"><ul><li><p>CSP, hx-on/trigger, XSS, HTML injection</p></li></ul></div></li><li><p>Combine approaches ("dynamic islands")</p></li></ul></div>
+<aside class="notes"><div class="ulist"><ul><li><p>most of the time, starting with hypermedia is good enough</p></li><li><p>think of the team structure -&#8594; full stack</p></li><li><p>using hypermedia as the main driver and use SPAs or similar when needed</p><div class="ulist"><ul><li><p>we have a classical ssr application but one part is using a js framework to enable drawing of graphs and move them around</p></li></ul></div></li></ul></div></aside></div></section>
 <section id="_must_read"><h2>Must Read</h2><div class="slide-content"><div class="r-stack">
 <div class="imageblock thumb"><img src="images/books.png" alt="books"></div>
 <div class="imageblock modern-frontends-thumb fragment"><img src="images/modern-frontends-discount-code.png" alt="modern frontends discount code"></div>
 </div>
-<div class="paragraph"><p>[notes</p></div>
-<div class="openblock"><div class="content"><div class="ulist"><ul><li><p>Wim shows how to build hypermedia driven applications with spring boot with ease</p></li><li><p>Hypermedia builds the foundation and concepts building different examples with python and flask</p></li><li><p>both are very valueable reads</p></li><li><p>Wim contacted me this morning and you can get a 20% discount just for Spring I/O!</p></li></ul></div></div></div></div></section>
+<aside class="notes"><div class="ulist"><ul><li><p>Wim shows how to build hypermedia driven applications with spring boot with ease</p></li><li><p>Hypermedia builds the foundation and concepts building different examples with python and flask</p></li><li><p>both are very valueable reads</p></li><li><p>Wim contacted me this morning and you can get a 20% discount just for Spring I/O!</p></li></ul></div></aside></div></section>
 <section id="_links"><h2>Links</h2><div class="slide-content"><div class="ulist"><ul><li><p><a href="https://htmx.org/">htmx.org</a></p></li><li><p><a href="https://www.wimdeblauwe.com/books/modern-frontends-with-htmx/">Modern Frontends with HTMX</a></p></li><li><p><a href="https://hypermedia.systems">Hypermedia Systems</a></p></li><li><p><a href="https://github.com/dashorst/funwithflags">Fun with Flags (Quarkus, HTMX, Websockets)</a></p></li><li><p><a href="https://tschuehly.gitbook.io/server-side-spring-htmx-workshop">HTMX + ViewComponents Workshop</a></p></li><li><p><a href="https://chrisdone.com/posts/htmx-critique/">A modest critique of Htmx</a></p></li><li><p><a href="https://unplannedobsolescence.com/blog/less-htmx-is-more/">Less HTMX is More</a></p></li><li><p><a href="https://www.sjoerdlangkemper.nl/2024/06/26/htmx-content-security-policy/">HTMX does not play well with content security policy</a></p></li></ul></div></div></section>
 <section id="_example_code" class="columns"><h2>Example Code</h2><div class="slide-content"><div class="ulist column"><ul><li><p><a href="https://github.com/atomfrede/spring-io-25-samples">GitHub</a></p></li><li><p><a href="https://codeberg.org/atomfrede/spring-io-25-sample">Codeberg</a></p></li></ul></div>
 <div class="imageblock thumb"><img src="images/gh-code.png" alt="250" width="250"></div>

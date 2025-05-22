@@ -26,6 +26,9 @@ image::form-empty.png[]
 
 [.notes]
 --
+* normal form, can be used with usual submit w/o javascript
+* trigger a `post` to `/` with *all* form parameters of the nearest form element
+* targeting the form itselt
 * using morph instead of default inner html replacement to keep selection and focus for example
 --
 
@@ -46,6 +49,12 @@ public String postIndex(@Valid FormModel formModel, BindingResult bindingResult,
     // usual form handling with redirect
 }
 ----
+
+[.notes]
+--
+* usual form submit with redirect
+* `@HxRequest` from 3rd Party library, makes sure that endpoint is only called when htmx issued the request using a dedicated `Header` attribute (`hx-request`)
+--
 
 == Form validation
 
@@ -138,6 +147,7 @@ public void updateNewsFeed(){
 [.notes]
 --
 * yes it is that simple
+* instead of broadcast you could just send items some specific client as well (all done on server side)
 --
 
 == Realtime updates
@@ -163,6 +173,8 @@ public void updateNewsFeed(){
 --
 * out of band swap
 * swap an element on the page (the news-feed)
+* can be used in general to piggy back additional parts of the page to be updated
+** use with care(!)
 * swap afterbegin --> latest items first
 --
 
@@ -170,7 +182,7 @@ public void updateNewsFeed(){
 
 == Modal dialogs
 
-* need to create the content on demand
+* need to *create the content on demand*
 * e.g. confirmation dialog for a delete action
 * leverage *htmx to retrieve the content*
 * use *alpine to handle interaction* with the modal

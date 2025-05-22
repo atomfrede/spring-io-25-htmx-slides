@@ -30,12 +30,14 @@ image::types2.png[]
 * Updated very frequently (e.g. Miro)
 * Be aware of certain security implications
 ** CSP, hx-on/trigger, XSS, HTML injection
-* Combine these approaches ("dynamic islands")
+* Combine approaches ("dynamic islands")
 
 [.notes]
 --
 * most of the time, starting with hypermedia is good enough
 * think of the team structure --> full stack
+* using hypermedia as the main driver and use SPAs or similar when needed
+** we have a classical ssr application but one part is using a js framework to enable drawing of graphs and move them around
 --
 
 == Must Read
@@ -50,7 +52,7 @@ image::modern-frontends-discount-code.png[role=modern-frontends-thumb]
 </div>
 ++++
 
-[notes
+[.notes]
 --
 * Wim shows how to build hypermedia driven applications with spring boot with ease
 * Hypermedia builds the foundation and concepts building different examples with python and flask

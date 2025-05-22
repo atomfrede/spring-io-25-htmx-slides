@@ -422,9 +422,10 @@ ul.byline li + li {
     hx-target="#parent-div"
     hx-swap="outerHTML"&gt;
     Click Me!
-&lt;/button&gt;</code></pre></div></div></div></section>
+&lt;/button&gt;</code></pre></div></div>
+<aside class="notes"><div class="ulist"><ul><li><p>When the button is clicked</p></li><li><p>a request to <code>/clicked</code> is issued</p></li><li><p>the result will be swapped into element with id <code>#parent-div</code></p></li><li><p>and it will replace the whole element (not just the content)</p></li></ul></div></aside></div></section>
 <section id="_jte"><h2>JTE</h2><div class="slide-content"><div class="ulist"><ul><li><p>There are a lot of template engines for java/the jvm</p></li><li><p>Most of them are very mature</p></li><li><p>But nearly none of them is typesafe</p></li><li><p>Many use reflection</p></li><li><p><strong>does it spark joy?</strong></p></li></ul></div>
-<aside class="notes"><div class="ulist"><ul><li><p>Without type safety refactoring becomes a nightmare</p></li><li><p>can&#8217;t see what a page really needs</p></li><li><p>reflection does not play well with native images/graal vm</p></li><li><p>alternatives e.g. JStachio when you would like to use a known template syntax</p></li><li><p>thymeleaf for feature rich and widespread support</p></li><li><p>qute for quarkus applications</p></li></ul></div></aside></div></section>
+<aside class="notes"><div class="ulist"><ul><li><p>Without type safety refactoring becomes a nightmare</p></li><li><p>can&#8217;t see what a page really needs</p></li><li><p>reflection does not play well with native images/graal vm</p></li></ul></div></aside></div></section>
 <section id="_jte_2"><h2>JTE</h2><div class="slide-content"><div class="listingblock"><div class="content"><pre class="highlight"><code class="language-html" data-lang="html">@import org.example.Page
 
 @param Page page
@@ -440,7 +441,7 @@ ul.byline li + li {
     &lt;p&gt;Welcome to my example page!&lt;/p&gt;
 &lt;/body&gt;</code></pre></div></div></div></section>
 <section id="_howl_hypermedia_on_whatever_you_like"><h2>HOWL - Hypermedia on whatever you like</h2><div class="slide-content"><div class="ulist"><ul><li><p>Thymeleaf - the feature-rich classic</p></li><li><p>JStachio - typesafe, fast mustache</p></li><li><p>HTMLFLow - DSL approach (better use kotlin)</p></li><li><p>kotlinx.html - Pure kotlin</p></li><li><p>Qute - the quarkus one</p></li><li><p>Spring ViewComponents</p></li></ul></div>
-<aside class="notes"><div class="ulist"><ul><li><p>it should support "fragments", partial HTML with ease</p></li><li><p>typesafe is better</p></li><li><p>ViewComponents: UI Components build on server side using JTE (Thymeleaf)</p></li><li><p>DSL approach looks promising</p></li></ul></div></aside></div></section>
+<aside class="notes"><div class="ulist"><ul><li><p>it should support "fragments", partial HTML with ease</p></li><li><p>typesafe is better</p></li><li><p>ViewComponents: UI Components build on server side using JTE (Thymeleaf)</p></li><li><p>VC: Locality of behaviour, all together at source level</p></li><li><p>DSL approach looks promising</p></li></ul></div></aside></div></section>
 <section id="_client_side_statescripting"><h2>Client-side state/scripting?</h2><div class="slide-content"><div class="ulist"><ul><li><p>Plain/VanillaJS</p></li><li><p>alpine.js</p></li><li><p>stimulus (hotwired)</p></li></ul></div>
 <aside class="notes"><div class="ulist"><ul><li><p>sometimes client side state/scripting is needed</p></li><li><p>e.g. dropdowns</p></li><li><p>alpine fits well declaratively</p></li><li><p>stimulus controller + declaratively application</p></li></ul></div></aside></div></section></div></div><script src="reveal/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
