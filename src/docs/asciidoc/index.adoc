@@ -10,6 +10,7 @@
 :revealjs_controls: true
 :source-highlighter: highlight.js
 :highlightjs-theme: highlight/styles/intellij-light.css
+:revealjs_totalTime: 3000
 :highlightjsdir: highlight
 :icons: font
 :imagesdir: images/
