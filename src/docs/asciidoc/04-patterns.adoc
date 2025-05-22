@@ -182,7 +182,7 @@ public void updateNewsFeed(){
 
 == Modal dialogs
 
-* need to *chdsreate the content on demand*
+* need to *create the content on demand*
 * e.g. confirmation dialog for a delete action
 * leverage *htmx to retrieve the content*
 * use *alpine to handle interaction* with the modal
