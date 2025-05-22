@@ -58,7 +58,7 @@ ____
 
 [.notes]
 --
-* So we must exhange HTML documents/snippets
+* So we must exchange HTML documents/snippets
 * JSON is *not* a hypermedia exchange!
 * Everything has/is a url
 * The response can just be rendered no need of the client to have any up front knowledge

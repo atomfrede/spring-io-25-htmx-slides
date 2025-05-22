@@ -104,8 +104,8 @@ ____
 == Client-side state/scripting?
 
 * Plain/VanillaJS
-* alpine.js
-* stimulus (hotwired)
+* https://alpinejs.dev/[alpine.js]
+* https://stimulus.hotwired.dev/[stimulus (hotwired)]
 
 [.notes]
 --
