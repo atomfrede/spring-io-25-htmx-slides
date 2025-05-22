@@ -1,11 +1,11 @@
-== Conclusion
+== 5. Conclusion
 
 == Does it spark joy?
 
 * removed a lot of complexity
 * pushed the barrier for SPAs further
 * ability to move faster (no contracts)
-* invest in long living, framework agnostic tech(niques)
+* invest in long living, framework-agnostic tech(niques)
 * team(s) are not split
 
 image::types2.png[]

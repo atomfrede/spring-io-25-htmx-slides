@@ -1,3 +1,5 @@
+== 3. HTMX
+
 == HTMX
 
 [quote,HTMX]
@@ -9,6 +11,12 @@ ____
 * simplifies AJAX, WebSockets, Server Send Events
 * access all the features declaratively via HTML attributes
 * server answers with (partial) HTML
+
+[.notes]
+--
+* Predecessor `intercooler.js` from ~2014 exact same concept, but dit not gain much traction
+* htmx picked up by different communities (Python, Ruby, Java...)
+--
 
 == HTMX Attributes
 

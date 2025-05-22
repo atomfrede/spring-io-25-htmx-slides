@@ -1,4 +1,4 @@
-== What is hypermedia?
+== 2. What is hypermedia?
 
 [.notes]
 --
@@ -37,9 +37,9 @@ ____
 
 * 1990 Tim Berners-Lee published the first website
 * HTML - Hypertext Markup Language
-* Hyperlinks between documents
+* *Hyperlinks* between documents
 * Forms where *not part* of the initial HTML (readonly)
-* Anchors and forms have been enough to make the web grow rapidly
+* Anchors and forms have been enough to make the *web grow rapidly*
 
 [.notes]
 --
@@ -59,6 +59,7 @@ ____
 [.notes]
 --
 * So we must exhange HTML documents/snippets
+* JSON is *not* a hypermedia exchange!
 * Everything has/is a url
 * The response can just be rendered no need of the client to have any up front knowledge
 * Where to find next part, how to retrieve e.g. next pages. HTML contains all this

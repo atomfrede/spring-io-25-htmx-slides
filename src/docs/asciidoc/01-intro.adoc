@@ -1,4 +1,6 @@
-== Modern Frontend Development
+== 1. Modern Frontend Development
+
+== What's the issue?
 
 * SPAs are often use "by default"
 * API Churn
@@ -15,9 +17,6 @@
 [%notitle]
 == Modern Frontend Development
 
-++++
-<!--<h2 class="r-fit-text">😱 😮‍💨</h2>-->
-++++
 
 image::logos.png[background, size=cover]
 
