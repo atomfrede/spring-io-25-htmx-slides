@@ -10,3 +10,8 @@
 aside.controls {
     margin-bottom: 35px;
 }
+
+.conf-image {
+    float: left;
+    max-width: 2.5rem;
+}

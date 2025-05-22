@@ -2,7 +2,11 @@
 ++++
 
   <div class="footer">
-            <span class="conference">{host-name}</span>
+            <span class="conference">
+    <a href="https://2025.springio.net/" title="Spring I/O 25">
+                    <img class="conf-image" src="images/spring-io-logo.jpg" height="3rem" alt="spring-io">
+                    </a>
+{host-name}</span>
             <span class="talk">{talk-tag}</span>
             <span class="speaker">
                 🦣 {mastodon-handle}
