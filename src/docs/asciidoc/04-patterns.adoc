@@ -172,8 +172,8 @@ public void updateNewsFeed(){
 
 * need to create the content on demand
 * e.g. confirmation dialog for a delete action
-* leverage htmx to get the content easily
-* use alpine to handle interaction with the modal
+* leverage *htmx to retrieve the content*
+* use *alpine to handle interaction* with the modal
 * server answers with the modal content/dialog
 
 == Modal dialogs

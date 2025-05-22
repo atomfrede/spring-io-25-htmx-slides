@@ -12,8 +12,8 @@ ____
 
 == HTMX Attributes
 
-[%step]
 * Small set of essential attributes
+[%steps]
 * `hx-get|post|put|delete`
 * `hx-target`
 * `hx-trigger`
@@ -72,8 +72,8 @@ ____
 
 == HOWL - Hypermedia on whatever you like
 
-* Thymeleaf - the classic
-* JStachio - typesafe, extremely fast mustache
+* Thymeleaf - the feature-rich classic
+* JStachio - typesafe, fast mustache
 * HTMLFLow - DSL approach (better use kotlin)
 * kotlinx.html - Pure kotlin
 * Qute - the quarkus one
@@ -81,9 +81,9 @@ ____
 
 [.notes]
 --
-* it should support "fragments"
+* it should support "fragments", partial HTML with ease
 * typesafe is better
-* ViewComponents: UI Components build on server side using JTE
+* ViewComponents: UI Components build on server side using JTE (Thymeleaf)
 * DSL approach looks promising
 --
 

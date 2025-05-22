@@ -7,8 +7,9 @@
 :revealjs_history: true
 :revealjs_center: true
 :revealjs_transition: fade
-:revealjs_controls: false
+:revealjs_controls: true
 :source-highlighter: highlight.js
+:highlightjs-theme: highlight/styles/intellij-light.css
 :highlightjsdir: highlight
 :icons: font
 :imagesdir: images/

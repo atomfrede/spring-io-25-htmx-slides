@@ -59,8 +59,9 @@ ____
 [.notes]
 --
 * So we must exhange HTML documents/snippets
-* Everything has an url
-* The response ca just be rendered no need of the client to have any up front knowledge
+* Everything has/is a url
+* The response can just be rendered no need of the client to have any up front knowledge
+* Where to find next part, how to retrieve e.g. next pages. HTML contains all this
 --
 
 == HTML stopped to evolve as hypermedia/hypertext
@@ -73,5 +74,6 @@ ____
 [.notes]
 --
 * These missing features makes it hard to build modern hypermedia drive applications
+* What about delete? What about things like filtering a list?
 --
 
